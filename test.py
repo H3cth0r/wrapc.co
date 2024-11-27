@@ -8,8 +8,9 @@ methods_to_include = [
     # "base64_encode",
     # "file_to_base64",
     # "process_image_block",
-    "process_inline_formatting",
-    "parse_markdown_line"
+    # "process_inline_formatting",
+    # "parse_markdown_line",
+    "process_markdown_file"
 ]
 
 base_path = "/home/h3cth0r/Documents/notes.co/notesco/c_src/"
@@ -22,3 +23,6 @@ ceg = CExtensionGenerator(
     output_path=base_path
 )
 ceg.parse_header()
+ceg.generate_c_extention_functions()
+ceg.generate_c_extension()
+ceg.save_extension_file()
