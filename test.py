@@ -1,4 +1,4 @@
-from wrapcco.wrapper import CExtensionGenerator
+from wrapcco.wrapper import Wrapper 
 
 methods_to_include = [
     # "print_buffer_size",
@@ -15,14 +15,14 @@ methods_to_include = [
 
 base_path = "/home/h3cth0r/Documents/notes.co/notesco/c_src/"
 
-ceg = CExtensionGenerator(
+wrapper = Wrapper(
     header_file=base_path + "markdown_to_html.h",
     source_file=base_path + "markdown_to_html.c",
     methods_to_include=methods_to_include,
     output_name="my_markdown_extension",
     output_path=base_path
 )
-ceg.parse_header()
-ceg.generate_c_extention_functions()
-ceg.generate_c_extension()
-ceg.save_extension_file()
+wrapper._parse_header()
+wrapper._generate_c_extension_functions()
+wrapper._generate_c_extension()
+wrapper._save_extension_file()
