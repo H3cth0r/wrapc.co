@@ -3,7 +3,7 @@ import os
 from typing import List
 import json
 
-class CExtensionGenerator:
+class Wrapper:
     def __init__(self, header_file: str, source_file: str, methods_to_include: List[str], output_name: str, output_path: str="./"):
         self.header_file = header_file
         self.source_file = source_file
@@ -21,7 +21,7 @@ class CExtensionGenerator:
         }
         self.manual_parsing = False
 
-    def parse_header(self) -> None:
+    def _parse_header(self) -> None:
         with open(self.header_file, 'r') as file: header_content = file.read()
 
         self.functions = {}
@@ -62,7 +62,7 @@ class CExtensionGenerator:
 
         print(json.dumps(self.functions, indent=4))
 
-    def generate_c_extention_functions(self):
+    def _generate_c_extension_functions(self)->None:
         self.c_functions = []
 
         for func_name, details in self.functions.items():
@@ -119,7 +119,7 @@ static PyObject* py_{func_name}(PyObject* self, PyObject* args) {{
             print(function_code)
             self.c_functions.append(function_code)
 
-    def generate_c_extension(self):
+    def _generate_c_extension(self)->None:
         method_table = ",\n     ".join([
             f'{{"{func_name}", py_{func_name}, METH_VARARGS, "Wrapper for {func_name}"}}'
             for func_name in self.functions.keys()
@@ -151,5 +151,13 @@ PyMODINIT_FUNC PyInit_{self.output_name}(void) {{
         print("="*30)
         print(self.c_extension_code)
 
-    def save_extension_file(self): 
+    def _save_extension_file(self) -> None: 
         with open(self.output_path + self.output_name + ".c", 'w') as file: file.write( self.c_extension_code)
+
+    def generate(self): 
+        self._parse_header()
+        self._generate_c_extension_functions()
+        self._generate_c_extension()
+        self._save_extension_file()
+
+    def clean(self):pass
