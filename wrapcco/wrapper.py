@@ -154,7 +154,7 @@ PyMODINIT_FUNC PyInit_{self.output_name}(void) {{
     def _save_extension_file(self) -> None: 
         with open(self.output_path + self.output_name + ".c", 'w') as file: file.write( self.c_extension_code)
 
-    def generate(self): 
+    def generate(self) -> None: 
         self._parse_header()
         self._generate_c_extension_functions()
         self._generate_c_extension()
