@@ -1,11 +1,14 @@
 from typing import List
 from .wrapper import Wrapper
 from setuptools import Extension as stExtension
+import os
 
 def wrapcco_setup(wrappers: List[Wrapper]) -> None:
     for wrapper in wrappers: wrapper.generate()
 
 # Don't forget to add a function to "clean --all"
+
+# class setuptools.Extension(name: str, sources: list[str | PathLike[str]], *args, py_limited_api: bool = False, **kw)
 
 class Extension(Wrapper):
     def __init__(self, header_file: str, source_file: str, methods_to_include: List[str], output_name: str, output_path: str = "./", *args, **kwargs):
@@ -16,7 +19,7 @@ class Extension(Wrapper):
     def _generate_extension(self):
         self.generate()
 
-        self.extension = Extension(
+        self.extension = stExtension(
             self.output_name, 
             sources=[
                 os.path.join(self.output_path, self.output_name + ".c"),
