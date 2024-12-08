@@ -1,4 +1,10 @@
-# wrapc.co
+<div align="center">
+    <picture>
+        <source media="(prefers-color-scheme: light)" srcset="/docs/logo_wrapc_light.svg">
+        <img alt="wrapc.co logo" src="/docs/logo_wrapc_dark.svg" width="50%" height="50%">
+    </picture>
+</div>
+
 Python Library to Wrap C code to python extensions
 
 ### Install from source
