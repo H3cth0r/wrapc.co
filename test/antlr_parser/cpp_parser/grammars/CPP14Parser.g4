@@ -801,13 +801,16 @@ memberSpecification
     ;
 
 memberdeclaration
-    : attributeSpecifierSeq? declSpecifierSeq? memberDeclaratorList? Semi
+    : emptyDefinition
     | functionDefinition
     | usingDeclaration
     | staticAssertDeclaration
     | templateDeclaration
     | aliasDeclaration
     | emptyDeclaration_
+    ;
+emptyDefinition
+    : attributeSpecifierSeq? declSpecifierSeq? memberDeclaratorList? Semi
     ;
 
 memberDeclaratorList

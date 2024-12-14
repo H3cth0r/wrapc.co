@@ -1,5 +1,5 @@
-#ifndef MY_CLASSES_H
-#define MY_CLASSES_H
+#ifndef HOLA
+#define ADIOS
 
 #include <string>
 #include <iostream>
@@ -10,9 +10,6 @@ public:
     MyClass(int value);
     int getValue();
     void setValue(int v);
-    void printHi() {
-        std::cout << "test" << std::endl;
-    } 
     
     // Static arithmetic operations
     static int sum(const MyClass& a, const MyClass& b);
@@ -20,7 +17,7 @@ public:
 
 private:
     int value;
-};
+}
 
 // Second C++ class
 //

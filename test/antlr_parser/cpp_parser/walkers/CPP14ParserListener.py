@@ -1331,6 +1331,15 @@ class CPP14ParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by CPP14Parser#emptyDefinition.
+    def enterEmptyDefinition(self, ctx:CPP14Parser.EmptyDefinitionContext):
+        pass
+
+    # Exit a parse tree produced by CPP14Parser#emptyDefinition.
+    def exitEmptyDefinition(self, ctx:CPP14Parser.EmptyDefinitionContext):
+        pass
+
+
     # Enter a parse tree produced by CPP14Parser#memberDeclaratorList.
     def enterMemberDeclaratorList(self, ctx:CPP14Parser.MemberDeclaratorListContext):
         pass

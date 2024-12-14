@@ -744,6 +744,11 @@ class CPP14ParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by CPP14Parser#emptyDefinition.
+    def visitEmptyDefinition(self, ctx:CPP14Parser.EmptyDefinitionContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by CPP14Parser#memberDeclaratorList.
     def visitMemberDeclaratorList(self, ctx:CPP14Parser.MemberDeclaratorListContext):
         return self.visitChildren(ctx)
