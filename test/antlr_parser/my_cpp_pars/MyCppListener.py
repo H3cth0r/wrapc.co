@@ -1,8 +1,8 @@
 import sys
 sys.path.append('./walkers')
-from CPP14ParserListener import CPP14ParserListener
+from CPP14Listener import CPP14Listener
 
-class MyCppListener(CPP14ParserListener):
+class MyCppListener(CPP14Listener):
     def __init__(self):
         print("\n"*4)
     # def enterOpenGuardian(self, ctx):
@@ -20,3 +20,12 @@ class MyCppListener(CPP14ParserListener):
     #     print(ctx.getText())
     # def enterAccessSpecifier(self, ctx):
     #     print(ctx.getText())
+    
+    def exitClassDefinition(self, ctx):
+        print("\n"*5)
+    
+    def enterMethodDeclaration(self, ctx):
+        print(ctx.getText())
+
+    def enterFunctionDefinition(self, ctx):
+        print(ctx.getText())

@@ -1,4 +1,4 @@
-# Generated from CPP14Parser.g4 by ANTLR 4.13.1
+# Generated from CPP14.g4 by ANTLR 4.13.1
 from antlr4 import *
 if "." in __name__:
     from .CPP14Parser import CPP14Parser
@@ -6,14 +6,14 @@ else:
     from CPP14Parser import CPP14Parser
 
 # This class defines a complete listener for a parse tree produced by CPP14Parser.
-class CPP14ParserListener(ParseTreeListener):
+class CPP14Listener(ParseTreeListener):
 
-    # Enter a parse tree produced by CPP14Parser#cppFile.
-    def enterCppFile(self, ctx:CPP14Parser.CppFileContext):
+    # Enter a parse tree produced by CPP14Parser#program.
+    def enterProgram(self, ctx:CPP14Parser.ProgramContext):
         pass
 
-    # Exit a parse tree produced by CPP14Parser#cppFile.
-    def exitCppFile(self, ctx:CPP14Parser.CppFileContext):
+    # Exit a parse tree produced by CPP14Parser#program.
+    def exitProgram(self, ctx:CPP14Parser.ProgramContext):
         pass
 
 
@@ -89,15 +89,6 @@ class CPP14ParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by CPP14Parser#constructorDeclaration.
-    def enterConstructorDeclaration(self, ctx:CPP14Parser.ConstructorDeclarationContext):
-        pass
-
-    # Exit a parse tree produced by CPP14Parser#constructorDeclaration.
-    def exitConstructorDeclaration(self, ctx:CPP14Parser.ConstructorDeclarationContext):
-        pass
-
-
     # Enter a parse tree produced by CPP14Parser#methodDeclaration.
     def enterMethodDeclaration(self, ctx:CPP14Parser.MethodDeclarationContext):
         pass
@@ -107,30 +98,21 @@ class CPP14ParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by CPP14Parser#returnType.
-    def enterReturnType(self, ctx:CPP14Parser.ReturnTypeContext):
+    # Enter a parse tree produced by CPP14Parser#constructorDeclaration.
+    def enterConstructorDeclaration(self, ctx:CPP14Parser.ConstructorDeclarationContext):
         pass
 
-    # Exit a parse tree produced by CPP14Parser#returnType.
-    def exitReturnType(self, ctx:CPP14Parser.ReturnTypeContext):
-        pass
-
-
-    # Enter a parse tree produced by CPP14Parser#parameterList.
-    def enterParameterList(self, ctx:CPP14Parser.ParameterListContext):
-        pass
-
-    # Exit a parse tree produced by CPP14Parser#parameterList.
-    def exitParameterList(self, ctx:CPP14Parser.ParameterListContext):
+    # Exit a parse tree produced by CPP14Parser#constructorDeclaration.
+    def exitConstructorDeclaration(self, ctx:CPP14Parser.ConstructorDeclarationContext):
         pass
 
 
-    # Enter a parse tree produced by CPP14Parser#parameter.
-    def enterParameter(self, ctx:CPP14Parser.ParameterContext):
+    # Enter a parse tree produced by CPP14Parser#functionDefinition.
+    def enterFunctionDefinition(self, ctx:CPP14Parser.FunctionDefinitionContext):
         pass
 
-    # Exit a parse tree produced by CPP14Parser#parameter.
-    def exitParameter(self, ctx:CPP14Parser.ParameterContext):
+    # Exit a parse tree produced by CPP14Parser#functionDefinition.
+    def exitFunctionDefinition(self, ctx:CPP14Parser.FunctionDefinitionContext):
         pass
 
 
@@ -149,6 +131,42 @@ class CPP14ParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by CPP14Parser#attributeDeclaration.
     def exitAttributeDeclaration(self, ctx:CPP14Parser.AttributeDeclarationContext):
+        pass
+
+
+    # Enter a parse tree produced by CPP14Parser#returnType.
+    def enterReturnType(self, ctx:CPP14Parser.ReturnTypeContext):
+        pass
+
+    # Exit a parse tree produced by CPP14Parser#returnType.
+    def exitReturnType(self, ctx:CPP14Parser.ReturnTypeContext):
+        pass
+
+
+    # Enter a parse tree produced by CPP14Parser#undefinedReturnType.
+    def enterUndefinedReturnType(self, ctx:CPP14Parser.UndefinedReturnTypeContext):
+        pass
+
+    # Exit a parse tree produced by CPP14Parser#undefinedReturnType.
+    def exitUndefinedReturnType(self, ctx:CPP14Parser.UndefinedReturnTypeContext):
+        pass
+
+
+    # Enter a parse tree produced by CPP14Parser#parameterList.
+    def enterParameterList(self, ctx:CPP14Parser.ParameterListContext):
+        pass
+
+    # Exit a parse tree produced by CPP14Parser#parameterList.
+    def exitParameterList(self, ctx:CPP14Parser.ParameterListContext):
+        pass
+
+
+    # Enter a parse tree produced by CPP14Parser#parameter.
+    def enterParameter(self, ctx:CPP14Parser.ParameterContext):
+        pass
+
+    # Exit a parse tree produced by CPP14Parser#parameter.
+    def exitParameter(self, ctx:CPP14Parser.ParameterContext):
         pass
 
 

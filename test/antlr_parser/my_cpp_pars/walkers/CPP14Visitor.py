@@ -1,4 +1,4 @@
-# Generated from CPP14Parser.g4 by ANTLR 4.13.1
+# Generated from CPP14.g4 by ANTLR 4.13.1
 from antlr4 import *
 if "." in __name__:
     from .CPP14Parser import CPP14Parser
@@ -7,10 +7,10 @@ else:
 
 # This class defines a complete generic visitor for a parse tree produced by CPP14Parser.
 
-class CPP14ParserVisitor(ParseTreeVisitor):
+class CPP14Visitor(ParseTreeVisitor):
 
-    # Visit a parse tree produced by CPP14Parser#cppFile.
-    def visitCppFile(self, ctx:CPP14Parser.CppFileContext):
+    # Visit a parse tree produced by CPP14Parser#program.
+    def visitProgram(self, ctx:CPP14Parser.ProgramContext):
         return self.visitChildren(ctx)
 
 
@@ -54,28 +54,18 @@ class CPP14ParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by CPP14Parser#constructorDeclaration.
-    def visitConstructorDeclaration(self, ctx:CPP14Parser.ConstructorDeclarationContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by CPP14Parser#methodDeclaration.
     def visitMethodDeclaration(self, ctx:CPP14Parser.MethodDeclarationContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by CPP14Parser#returnType.
-    def visitReturnType(self, ctx:CPP14Parser.ReturnTypeContext):
+    # Visit a parse tree produced by CPP14Parser#constructorDeclaration.
+    def visitConstructorDeclaration(self, ctx:CPP14Parser.ConstructorDeclarationContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by CPP14Parser#parameterList.
-    def visitParameterList(self, ctx:CPP14Parser.ParameterListContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by CPP14Parser#parameter.
-    def visitParameter(self, ctx:CPP14Parser.ParameterContext):
+    # Visit a parse tree produced by CPP14Parser#functionDefinition.
+    def visitFunctionDefinition(self, ctx:CPP14Parser.FunctionDefinitionContext):
         return self.visitChildren(ctx)
 
 
@@ -86,6 +76,26 @@ class CPP14ParserVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by CPP14Parser#attributeDeclaration.
     def visitAttributeDeclaration(self, ctx:CPP14Parser.AttributeDeclarationContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by CPP14Parser#returnType.
+    def visitReturnType(self, ctx:CPP14Parser.ReturnTypeContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by CPP14Parser#undefinedReturnType.
+    def visitUndefinedReturnType(self, ctx:CPP14Parser.UndefinedReturnTypeContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by CPP14Parser#parameterList.
+    def visitParameterList(self, ctx:CPP14Parser.ParameterListContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by CPP14Parser#parameter.
+    def visitParameter(self, ctx:CPP14Parser.ParameterContext):
         return self.visitChildren(ctx)
 
 

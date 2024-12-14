@@ -1,6 +1,6 @@
 lexer grammar CPP14Lexer;
 
-// Keywords
+
 Class:          'class';
 Void:           'void';
 PublicAccess:   'public';
@@ -11,7 +11,19 @@ Define:         'define';
 Endif:          'endif';
 Include:        'include';
 
-// Symbols
+Static:         'static';
+Const:          'const';
+
+Bool:     'bool';
+Char:     'char';
+Int:      'int';
+Float:    'float';
+Double:   'double';
+Long:     'long';
+Short:    'short';
+String:   'string';
+    
+
 LeftBrace:      '{';
 RightBrace:     '}';
 LeftPar:        '(';
@@ -23,38 +35,17 @@ Colon:          ':';
 DoubleColon:    '::';
 Comma:          ',';
 Hash:           '#';
-Static:         'static';
-Const:          'const';
 Ampersand:      '&';
 Star:           '*';
 
-// Types must come before Identifier to take precedence
-Type
-    : BuiltInType
-    | Identifier (DoubleColon Identifier)*
-    ;
-
-fragment BuiltInType
-    : 'bool' 
-    | 'char' 
-    | 'int' 
-    | 'float' 
-    | 'double' 
-    | 'long' 
-    | 'short'
-    | 'string'
-    ;
-
-MacroIdentifier
-    : [A-Z_] [A-Z0-9_]*
-    ;
-
-// Modified to handle different types of identifiers
 Identifier
     : [a-zA-Z] [a-zA-Z0-9_]*  
     ;
 
-// Skip whitespace and comments
+Type 
+    : Identifier (DoubleColon Identifier)*
+    ;
+
 Whitespace
     : [ \t]+ -> skip
     ;

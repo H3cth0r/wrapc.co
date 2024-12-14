@@ -13,7 +13,7 @@ if __name__ == "__main__":
     token_stream = CommonTokenStream(lexer)
     parser = CPP14Parser(token_stream)
 
-    tree = parser.cppFile()
+    tree = parser.program()
 
     listener = MyCppListener()
     walker = ParseTreeWalker()
