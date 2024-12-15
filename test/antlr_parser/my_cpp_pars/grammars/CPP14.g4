@@ -43,7 +43,13 @@ accessSpecifier
     ;
 
 methodDeclaration
-    : (Static | Const)? returnType Identifier LeftPar parameterList? RightPar Semi
+    : methodReturnType methodName LeftPar parameterList? RightPar Semi
+    ;
+methodReturnType
+    : returnType
+    ;
+methodName
+    : Identifier
     ;
 constructorDeclaration
     : className LeftPar parameterList? RightPar Semi
@@ -63,7 +69,7 @@ attributeDeclaration
     ;
 
 returnType
-    : ( Bool | Char | Int | Float | Double | Long | Short | Void | undefinedReturnType) (Ampersand | Star)?
+    : (Static | Const)? ( Bool | Char | Int | Float | Double | Long | Short | Void | undefinedReturnType) (Ampersand | Star)?
     ;
 
 undefinedReturnType

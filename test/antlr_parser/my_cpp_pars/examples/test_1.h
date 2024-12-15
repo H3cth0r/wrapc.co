@@ -13,7 +13,7 @@ public:
     
     // Static arithmetic operations
     static int sum(const MyClass& a, const MyClass& b);
-    static int subtract(const MyClass& a, const MyClass& b);
+    static int subtract(const MyClass& aa, const MyClass& bbb);
 
 private:
     int value;

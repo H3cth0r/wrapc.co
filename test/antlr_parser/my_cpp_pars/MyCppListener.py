@@ -1,31 +1,97 @@
 import sys
+from dataclasses import dataclass, field
+from typing import List
+import pprint
 sys.path.append('./walkers')
 from CPP14Listener import CPP14Listener
 
+@dataclass
+class Param:
+    paramType: str = ""
+    paramName: str = ""
+@dataclass
+class Method:
+    accessSpecifier: str = ""
+    methodName: str = ""
+    params: List[Param] = field(default_factory=list)
+    returnType: str = ""
+@dataclass
+class Constructor:
+    params: List[Param] = field(default_factory=list)
+@dataclass
+class Attribute:
+    accessSpecifier: str = ""
+    attrType: str = ""
+    attrName: str = ""
+@dataclass
+class ClassDef:
+    className: str = ""
+    constructors: List[Constructor] = field(default_factory=list)
+    methods: List[Method] = field(default_factory=list)
+    attributes: List[Attribute] = field(default_factory=list)
+
+@dataclass
+class Program:
+    classes: List[ClassDef] = field(default_factory=list)
+
 class MyCppListener(CPP14Listener):
     def __init__(self):
-        print("\n"*4)
-    # def enterOpenGuardian(self, ctx):
-    #     print(ctx.getText())
-    def enterClassContent(self, ctx):
-        print(f"{ctx.getText()}\t\t{ctx.getChild(0).__class__.__name__}")
-        print("="*30)
-    def enterOpenGuardian(self, ctx):
-        print(f"{ctx.getText()}")
-        for i in range(ctx.getChildCount()):
-            print(f"\t->{ctx.getChild(i).getText()}\t\t{ctx.getChild(i).__class__.__name__}")
-    # def enterConstructor(self, ctx):
-    #     print(ctx.getText())
-    # def enterCloseGuardian(self, ctx):
-    #     print(ctx.getText())
-    # def enterAccessSpecifier(self, ctx):
-    #     print(ctx.getText())
-    
-    def exitClassDefinition(self, ctx):
-        print("\n"*5)
-    
-    def enterMethodDeclaration(self, ctx):
-        print(ctx.getText())
+        self.inProgramContent = ""
+        self.accessSpecifier = 'private'
+        self.method = None
+        self.constructor = None
+        self.attribute = None
+        print("\n"*2)
+        self.program = Program()
 
-    def enterFunctionDefinition(self, ctx):
-        print(ctx.getText())
+    # Enter class defintion
+    def enterClassDefinition(self, ctx):
+        self.inProgramContent = "class"
+        self.classDef = ClassDef()
+        self.classDef.className = ctx.getChild(1).getText()
+
+    def enterAccessSpecifier(self, ctx):
+        self.accessSpecifier = ctx.getChild(0).getText()
+
+    def enterConstructorDeclaration(self, ctx): self.constructor = Constructor()
+    def exitConstructorDeclaration(self, ctx): 
+        self.classDef.constructors.append(self.constructor)
+        self.constructor = None
+
+    def enterMethodDeclaration(self, ctx):
+        self.method = Method()
+        self.method.accessSpecifier = self.accessSpecifier
+    def enterMethodName(self, ctx): self.method.methodName = ctx.getText()
+    def enterMethodReturnType(self, ctx): 
+        RT = ctx.getChild(0)
+        for i in range(RT.getChildCount()):
+            txt = RT.getChild(i).getText()
+            self.method.returnType += txt if RT.getChildCount()-1 == i else txt + " "
+    def enterParameter(self, ctx):
+        param = Param()
+        for i in range(ctx.getChildCount()):
+            txt = ctx.getChild(i).getText()
+            if i == ctx.getChildCount()-1: param.paramName += txt
+            else: param.paramType += txt if ctx.getChildCount()-2 == i else txt + " "
+        if self.method: self.method.params.append(param)
+        elif self.constructor: self.constructor.params.append(param)
+    def exitMethodDeclaration(self, ctx): 
+        self.classDef.methods.append(self.method)
+        self.method = None
+
+    def enterAttributeDeclaration(self, ctx):
+        self.attribute = Attribute()
+        self.attribute.accessSpecifier = self.accessSpecifier
+        self.attribute.attrType = ctx.getChild(0).getText()
+        self.attribute.attrName = ctx.getChild(1).getText()
+    def exitAttributeDeclaration(self, ctx):
+        self.classDef.attributes.append(self.attribute)
+        self.attribute = None
+
+    def exitClassDefinition(self, ctx):
+        # print(self.classDef)
+        pprint.pp(self.classDef)
+        self.program.classes.append(self.classDef)
+
+
+    # Exit class defintion

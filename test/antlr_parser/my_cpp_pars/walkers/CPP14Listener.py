@@ -98,6 +98,24 @@ class CPP14Listener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by CPP14Parser#methodReturnType.
+    def enterMethodReturnType(self, ctx:CPP14Parser.MethodReturnTypeContext):
+        pass
+
+    # Exit a parse tree produced by CPP14Parser#methodReturnType.
+    def exitMethodReturnType(self, ctx:CPP14Parser.MethodReturnTypeContext):
+        pass
+
+
+    # Enter a parse tree produced by CPP14Parser#methodName.
+    def enterMethodName(self, ctx:CPP14Parser.MethodNameContext):
+        pass
+
+    # Exit a parse tree produced by CPP14Parser#methodName.
+    def exitMethodName(self, ctx:CPP14Parser.MethodNameContext):
+        pass
+
+
     # Enter a parse tree produced by CPP14Parser#constructorDeclaration.
     def enterConstructorDeclaration(self, ctx:CPP14Parser.ConstructorDeclarationContext):
         pass
