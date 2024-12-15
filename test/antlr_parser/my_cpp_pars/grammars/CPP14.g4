@@ -56,7 +56,10 @@ constructorDeclaration
     ;
 
 functionDefinition
-    : returnType Identifier LeftPar parameterList? RightPar Semi
+    : functionReturnType Identifier LeftPar parameterList? RightPar Semi
+    ;
+functionReturnType
+    : returnType
     ;
 
 parameterType

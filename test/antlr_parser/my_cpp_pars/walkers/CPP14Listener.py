@@ -134,6 +134,15 @@ class CPP14Listener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by CPP14Parser#functionReturnType.
+    def enterFunctionReturnType(self, ctx:CPP14Parser.FunctionReturnTypeContext):
+        pass
+
+    # Exit a parse tree produced by CPP14Parser#functionReturnType.
+    def exitFunctionReturnType(self, ctx:CPP14Parser.FunctionReturnTypeContext):
+        pass
+
+
     # Enter a parse tree produced by CPP14Parser#parameterType.
     def enterParameterType(self, ctx:CPP14Parser.ParameterTypeContext):
         pass

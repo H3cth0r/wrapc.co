@@ -10,75 +10,76 @@ else:
 
 def serializedATN():
     return [
-        4,1,36,198,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
+        4,1,36,202,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
         6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,
-        2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,1,0,
-        3,0,42,8,0,1,0,5,0,45,8,0,10,0,12,0,48,9,0,1,0,3,0,51,8,0,1,1,1,
-        1,1,1,1,1,1,1,1,1,1,1,1,2,1,2,1,2,1,3,1,3,1,3,3,3,66,8,3,1,4,1,4,
-        1,4,1,4,1,4,1,4,5,4,74,8,4,10,4,12,4,77,9,4,1,4,1,4,1,5,1,5,1,5,
-        1,5,5,5,85,8,5,10,5,12,5,88,9,5,1,5,1,5,3,5,92,8,5,1,6,1,6,1,7,1,
-        7,1,7,1,7,3,7,100,8,7,1,8,1,8,1,8,1,9,1,9,1,9,1,9,3,9,109,8,9,1,
-        9,1,9,1,9,1,10,1,10,1,11,1,11,1,12,1,12,1,12,3,12,121,8,12,1,12,
-        1,12,1,12,1,13,1,13,1,13,1,13,3,13,130,8,13,1,13,1,13,1,13,1,14,
-        1,14,3,14,137,8,14,1,15,1,15,1,15,1,15,1,16,3,16,144,8,16,1,16,1,
-        16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,3,16,155,8,16,1,16,3,16,158,
-        8,16,1,17,1,17,1,17,5,17,163,8,17,10,17,12,17,166,9,17,1,18,1,18,
-        1,18,5,18,171,8,18,10,18,12,18,174,9,18,1,19,3,19,177,8,19,1,19,
-        1,19,1,19,1,19,3,19,183,8,19,1,19,1,19,1,19,1,19,1,19,3,19,190,8,
-        19,1,19,1,19,1,19,1,19,3,19,196,8,19,1,19,0,0,20,0,2,4,6,8,10,12,
-        14,16,18,20,22,24,26,28,30,32,34,36,38,0,3,1,0,3,5,1,0,10,11,1,0,
-        30,31,209,0,41,1,0,0,0,2,52,1,0,0,0,4,59,1,0,0,0,6,65,1,0,0,0,8,
-        67,1,0,0,0,10,80,1,0,0,0,12,93,1,0,0,0,14,99,1,0,0,0,16,101,1,0,
-        0,0,18,104,1,0,0,0,20,113,1,0,0,0,22,115,1,0,0,0,24,117,1,0,0,0,
-        26,125,1,0,0,0,28,136,1,0,0,0,30,138,1,0,0,0,32,143,1,0,0,0,34,159,
-        1,0,0,0,36,167,1,0,0,0,38,195,1,0,0,0,40,42,3,2,1,0,41,40,1,0,0,
-        0,41,42,1,0,0,0,42,46,1,0,0,0,43,45,3,6,3,0,44,43,1,0,0,0,45,48,
-        1,0,0,0,46,44,1,0,0,0,46,47,1,0,0,0,47,50,1,0,0,0,48,46,1,0,0,0,
-        49,51,3,4,2,0,50,49,1,0,0,0,50,51,1,0,0,0,51,1,1,0,0,0,52,53,5,29,
-        0,0,53,54,5,6,0,0,54,55,5,32,0,0,55,56,5,29,0,0,56,57,5,7,0,0,57,
-        58,5,32,0,0,58,3,1,0,0,0,59,60,5,29,0,0,60,61,5,8,0,0,61,5,1,0,0,
-        0,62,66,3,8,4,0,63,66,3,10,5,0,64,66,3,26,13,0,65,62,1,0,0,0,65,
-        63,1,0,0,0,65,64,1,0,0,0,66,7,1,0,0,0,67,68,5,29,0,0,68,69,5,9,0,
-        0,69,70,5,23,0,0,70,75,5,32,0,0,71,72,5,27,0,0,72,74,5,32,0,0,73,
-        71,1,0,0,0,74,77,1,0,0,0,75,73,1,0,0,0,75,76,1,0,0,0,76,78,1,0,0,
-        0,77,75,1,0,0,0,78,79,5,24,0,0,79,9,1,0,0,0,80,81,5,1,0,0,81,82,
-        3,12,6,0,82,86,5,19,0,0,83,85,3,14,7,0,84,83,1,0,0,0,85,88,1,0,0,
-        0,86,84,1,0,0,0,86,87,1,0,0,0,87,89,1,0,0,0,88,86,1,0,0,0,89,91,
-        5,20,0,0,90,92,5,25,0,0,91,90,1,0,0,0,91,92,1,0,0,0,92,11,1,0,0,
-        0,93,94,5,32,0,0,94,13,1,0,0,0,95,100,3,16,8,0,96,100,3,18,9,0,97,
-        100,3,24,12,0,98,100,3,30,15,0,99,95,1,0,0,0,99,96,1,0,0,0,99,97,
-        1,0,0,0,99,98,1,0,0,0,100,15,1,0,0,0,101,102,7,0,0,0,102,103,5,26,
-        0,0,103,17,1,0,0,0,104,105,3,20,10,0,105,106,3,22,11,0,106,108,5,
-        21,0,0,107,109,3,36,18,0,108,107,1,0,0,0,108,109,1,0,0,0,109,110,
-        1,0,0,0,110,111,5,22,0,0,111,112,5,25,0,0,112,19,1,0,0,0,113,114,
-        3,32,16,0,114,21,1,0,0,0,115,116,5,32,0,0,116,23,1,0,0,0,117,118,
-        3,12,6,0,118,120,5,21,0,0,119,121,3,36,18,0,120,119,1,0,0,0,120,
-        121,1,0,0,0,121,122,1,0,0,0,122,123,5,22,0,0,123,124,5,25,0,0,124,
-        25,1,0,0,0,125,126,3,32,16,0,126,127,5,32,0,0,127,129,5,21,0,0,128,
-        130,3,36,18,0,129,128,1,0,0,0,129,130,1,0,0,0,130,131,1,0,0,0,131,
-        132,5,22,0,0,132,133,5,25,0,0,133,27,1,0,0,0,134,137,3,32,16,0,135,
-        137,3,12,6,0,136,134,1,0,0,0,136,135,1,0,0,0,137,29,1,0,0,0,138,
-        139,3,32,16,0,139,140,5,32,0,0,140,141,5,25,0,0,141,31,1,0,0,0,142,
-        144,7,1,0,0,143,142,1,0,0,0,143,144,1,0,0,0,144,154,1,0,0,0,145,
-        155,5,12,0,0,146,155,5,13,0,0,147,155,5,14,0,0,148,155,5,15,0,0,
-        149,155,5,16,0,0,150,155,5,17,0,0,151,155,5,18,0,0,152,155,5,2,0,
-        0,153,155,3,34,17,0,154,145,1,0,0,0,154,146,1,0,0,0,154,147,1,0,
-        0,0,154,148,1,0,0,0,154,149,1,0,0,0,154,150,1,0,0,0,154,151,1,0,
-        0,0,154,152,1,0,0,0,154,153,1,0,0,0,155,157,1,0,0,0,156,158,7,2,
-        0,0,157,156,1,0,0,0,157,158,1,0,0,0,158,33,1,0,0,0,159,164,5,32,
-        0,0,160,161,5,27,0,0,161,163,5,32,0,0,162,160,1,0,0,0,163,166,1,
-        0,0,0,164,162,1,0,0,0,164,165,1,0,0,0,165,35,1,0,0,0,166,164,1,0,
-        0,0,167,172,3,38,19,0,168,169,5,28,0,0,169,171,3,38,19,0,170,168,
-        1,0,0,0,171,174,1,0,0,0,172,170,1,0,0,0,172,173,1,0,0,0,173,37,1,
-        0,0,0,174,172,1,0,0,0,175,177,5,11,0,0,176,175,1,0,0,0,176,177,1,
-        0,0,0,177,178,1,0,0,0,178,179,3,28,14,0,179,180,5,32,0,0,180,196,
-        1,0,0,0,181,183,5,11,0,0,182,181,1,0,0,0,182,183,1,0,0,0,183,184,
-        1,0,0,0,184,185,3,28,14,0,185,186,5,30,0,0,186,187,5,32,0,0,187,
-        196,1,0,0,0,188,190,5,11,0,0,189,188,1,0,0,0,189,190,1,0,0,0,190,
-        191,1,0,0,0,191,192,3,28,14,0,192,193,5,31,0,0,193,194,5,32,0,0,
-        194,196,1,0,0,0,195,176,1,0,0,0,195,182,1,0,0,0,195,189,1,0,0,0,
-        196,39,1,0,0,0,21,41,46,50,65,75,86,91,99,108,120,129,136,143,154,
-        157,164,172,176,182,189,195
+        2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,20,
+        7,20,1,0,3,0,44,8,0,1,0,5,0,47,8,0,10,0,12,0,50,9,0,1,0,3,0,53,8,
+        0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,2,1,2,1,3,1,3,1,3,3,3,68,8,3,
+        1,4,1,4,1,4,1,4,1,4,1,4,5,4,76,8,4,10,4,12,4,79,9,4,1,4,1,4,1,5,
+        1,5,1,5,1,5,5,5,87,8,5,10,5,12,5,90,9,5,1,5,1,5,3,5,94,8,5,1,6,1,
+        6,1,7,1,7,1,7,1,7,3,7,102,8,7,1,8,1,8,1,8,1,9,1,9,1,9,1,9,3,9,111,
+        8,9,1,9,1,9,1,9,1,10,1,10,1,11,1,11,1,12,1,12,1,12,3,12,123,8,12,
+        1,12,1,12,1,12,1,13,1,13,1,13,1,13,3,13,132,8,13,1,13,1,13,1,13,
+        1,14,1,14,1,15,1,15,3,15,141,8,15,1,16,1,16,1,16,1,16,1,17,3,17,
+        148,8,17,1,17,1,17,1,17,1,17,1,17,1,17,1,17,1,17,1,17,3,17,159,8,
+        17,1,17,3,17,162,8,17,1,18,1,18,1,18,5,18,167,8,18,10,18,12,18,170,
+        9,18,1,19,1,19,1,19,5,19,175,8,19,10,19,12,19,178,9,19,1,20,3,20,
+        181,8,20,1,20,1,20,1,20,1,20,3,20,187,8,20,1,20,1,20,1,20,1,20,1,
+        20,3,20,194,8,20,1,20,1,20,1,20,1,20,3,20,200,8,20,1,20,0,0,21,0,
+        2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,0,3,1,0,
+        3,5,1,0,10,11,1,0,30,31,212,0,43,1,0,0,0,2,54,1,0,0,0,4,61,1,0,0,
+        0,6,67,1,0,0,0,8,69,1,0,0,0,10,82,1,0,0,0,12,95,1,0,0,0,14,101,1,
+        0,0,0,16,103,1,0,0,0,18,106,1,0,0,0,20,115,1,0,0,0,22,117,1,0,0,
+        0,24,119,1,0,0,0,26,127,1,0,0,0,28,136,1,0,0,0,30,140,1,0,0,0,32,
+        142,1,0,0,0,34,147,1,0,0,0,36,163,1,0,0,0,38,171,1,0,0,0,40,199,
+        1,0,0,0,42,44,3,2,1,0,43,42,1,0,0,0,43,44,1,0,0,0,44,48,1,0,0,0,
+        45,47,3,6,3,0,46,45,1,0,0,0,47,50,1,0,0,0,48,46,1,0,0,0,48,49,1,
+        0,0,0,49,52,1,0,0,0,50,48,1,0,0,0,51,53,3,4,2,0,52,51,1,0,0,0,52,
+        53,1,0,0,0,53,1,1,0,0,0,54,55,5,29,0,0,55,56,5,6,0,0,56,57,5,32,
+        0,0,57,58,5,29,0,0,58,59,5,7,0,0,59,60,5,32,0,0,60,3,1,0,0,0,61,
+        62,5,29,0,0,62,63,5,8,0,0,63,5,1,0,0,0,64,68,3,8,4,0,65,68,3,10,
+        5,0,66,68,3,26,13,0,67,64,1,0,0,0,67,65,1,0,0,0,67,66,1,0,0,0,68,
+        7,1,0,0,0,69,70,5,29,0,0,70,71,5,9,0,0,71,72,5,23,0,0,72,77,5,32,
+        0,0,73,74,5,27,0,0,74,76,5,32,0,0,75,73,1,0,0,0,76,79,1,0,0,0,77,
+        75,1,0,0,0,77,78,1,0,0,0,78,80,1,0,0,0,79,77,1,0,0,0,80,81,5,24,
+        0,0,81,9,1,0,0,0,82,83,5,1,0,0,83,84,3,12,6,0,84,88,5,19,0,0,85,
+        87,3,14,7,0,86,85,1,0,0,0,87,90,1,0,0,0,88,86,1,0,0,0,88,89,1,0,
+        0,0,89,91,1,0,0,0,90,88,1,0,0,0,91,93,5,20,0,0,92,94,5,25,0,0,93,
+        92,1,0,0,0,93,94,1,0,0,0,94,11,1,0,0,0,95,96,5,32,0,0,96,13,1,0,
+        0,0,97,102,3,16,8,0,98,102,3,18,9,0,99,102,3,24,12,0,100,102,3,32,
+        16,0,101,97,1,0,0,0,101,98,1,0,0,0,101,99,1,0,0,0,101,100,1,0,0,
+        0,102,15,1,0,0,0,103,104,7,0,0,0,104,105,5,26,0,0,105,17,1,0,0,0,
+        106,107,3,20,10,0,107,108,3,22,11,0,108,110,5,21,0,0,109,111,3,38,
+        19,0,110,109,1,0,0,0,110,111,1,0,0,0,111,112,1,0,0,0,112,113,5,22,
+        0,0,113,114,5,25,0,0,114,19,1,0,0,0,115,116,3,34,17,0,116,21,1,0,
+        0,0,117,118,5,32,0,0,118,23,1,0,0,0,119,120,3,12,6,0,120,122,5,21,
+        0,0,121,123,3,38,19,0,122,121,1,0,0,0,122,123,1,0,0,0,123,124,1,
+        0,0,0,124,125,5,22,0,0,125,126,5,25,0,0,126,25,1,0,0,0,127,128,3,
+        28,14,0,128,129,5,32,0,0,129,131,5,21,0,0,130,132,3,38,19,0,131,
+        130,1,0,0,0,131,132,1,0,0,0,132,133,1,0,0,0,133,134,5,22,0,0,134,
+        135,5,25,0,0,135,27,1,0,0,0,136,137,3,34,17,0,137,29,1,0,0,0,138,
+        141,3,34,17,0,139,141,3,12,6,0,140,138,1,0,0,0,140,139,1,0,0,0,141,
+        31,1,0,0,0,142,143,3,34,17,0,143,144,5,32,0,0,144,145,5,25,0,0,145,
+        33,1,0,0,0,146,148,7,1,0,0,147,146,1,0,0,0,147,148,1,0,0,0,148,158,
+        1,0,0,0,149,159,5,12,0,0,150,159,5,13,0,0,151,159,5,14,0,0,152,159,
+        5,15,0,0,153,159,5,16,0,0,154,159,5,17,0,0,155,159,5,18,0,0,156,
+        159,5,2,0,0,157,159,3,36,18,0,158,149,1,0,0,0,158,150,1,0,0,0,158,
+        151,1,0,0,0,158,152,1,0,0,0,158,153,1,0,0,0,158,154,1,0,0,0,158,
+        155,1,0,0,0,158,156,1,0,0,0,158,157,1,0,0,0,159,161,1,0,0,0,160,
+        162,7,2,0,0,161,160,1,0,0,0,161,162,1,0,0,0,162,35,1,0,0,0,163,168,
+        5,32,0,0,164,165,5,27,0,0,165,167,5,32,0,0,166,164,1,0,0,0,167,170,
+        1,0,0,0,168,166,1,0,0,0,168,169,1,0,0,0,169,37,1,0,0,0,170,168,1,
+        0,0,0,171,176,3,40,20,0,172,173,5,28,0,0,173,175,3,40,20,0,174,172,
+        1,0,0,0,175,178,1,0,0,0,176,174,1,0,0,0,176,177,1,0,0,0,177,39,1,
+        0,0,0,178,176,1,0,0,0,179,181,5,11,0,0,180,179,1,0,0,0,180,181,1,
+        0,0,0,181,182,1,0,0,0,182,183,3,30,15,0,183,184,5,32,0,0,184,200,
+        1,0,0,0,185,187,5,11,0,0,186,185,1,0,0,0,186,187,1,0,0,0,187,188,
+        1,0,0,0,188,189,3,30,15,0,189,190,5,30,0,0,190,191,5,32,0,0,191,
+        200,1,0,0,0,192,194,5,11,0,0,193,192,1,0,0,0,193,194,1,0,0,0,194,
+        195,1,0,0,0,195,196,3,30,15,0,196,197,5,31,0,0,197,198,5,32,0,0,
+        198,200,1,0,0,0,199,180,1,0,0,0,199,186,1,0,0,0,199,193,1,0,0,0,
+        200,41,1,0,0,0,21,43,48,52,67,77,88,93,101,110,122,131,140,147,158,
+        161,168,176,180,186,193,199
     ]
 
 class CPP14Parser ( Parser ):
@@ -121,19 +122,21 @@ class CPP14Parser ( Parser ):
     RULE_methodName = 11
     RULE_constructorDeclaration = 12
     RULE_functionDefinition = 13
-    RULE_parameterType = 14
-    RULE_attributeDeclaration = 15
-    RULE_returnType = 16
-    RULE_undefinedReturnType = 17
-    RULE_parameterList = 18
-    RULE_parameter = 19
+    RULE_functionReturnType = 14
+    RULE_parameterType = 15
+    RULE_attributeDeclaration = 16
+    RULE_returnType = 17
+    RULE_undefinedReturnType = 18
+    RULE_parameterList = 19
+    RULE_parameter = 20
 
     ruleNames =  [ "program", "openGuardian", "closeGuardian", "programContent", 
                    "includeStatement", "classDefinition", "className", "classContent", 
                    "accessSpecifier", "methodDeclaration", "methodReturnType", 
                    "methodName", "constructorDeclaration", "functionDefinition", 
-                   "parameterType", "attributeDeclaration", "returnType", 
-                   "undefinedReturnType", "parameterList", "parameter" ]
+                   "functionReturnType", "parameterType", "attributeDeclaration", 
+                   "returnType", "undefinedReturnType", "parameterList", 
+                   "parameter" ]
 
     EOF = Token.EOF
     Class=1
@@ -231,30 +234,30 @@ class CPP14Parser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 41
+            self.state = 43
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,0,self._ctx)
             if la_ == 1:
-                self.state = 40
+                self.state = 42
                 self.openGuardian()
 
 
-            self.state = 46
+            self.state = 48
             self._errHandler.sync(self)
             _alt = self._interp.adaptivePredict(self._input,1,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
-                    self.state = 43
+                    self.state = 45
                     self.programContent() 
-                self.state = 48
+                self.state = 50
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input,1,self._ctx)
 
-            self.state = 50
+            self.state = 52
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==29:
-                self.state = 49
+                self.state = 51
                 self.closeGuardian()
 
 
@@ -318,17 +321,17 @@ class CPP14Parser ( Parser ):
         self.enterRule(localctx, 2, self.RULE_openGuardian)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 52
-            self.match(CPP14Parser.Hash)
-            self.state = 53
-            self.match(CPP14Parser.Ifndef)
             self.state = 54
-            self.match(CPP14Parser.Identifier)
-            self.state = 55
             self.match(CPP14Parser.Hash)
+            self.state = 55
+            self.match(CPP14Parser.Ifndef)
             self.state = 56
-            self.match(CPP14Parser.Define)
+            self.match(CPP14Parser.Identifier)
             self.state = 57
+            self.match(CPP14Parser.Hash)
+            self.state = 58
+            self.match(CPP14Parser.Define)
+            self.state = 59
             self.match(CPP14Parser.Identifier)
         except RecognitionException as re:
             localctx.exception = re
@@ -378,9 +381,9 @@ class CPP14Parser ( Parser ):
         self.enterRule(localctx, 4, self.RULE_closeGuardian)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 59
+            self.state = 61
             self.match(CPP14Parser.Hash)
-            self.state = 60
+            self.state = 62
             self.match(CPP14Parser.Endif)
         except RecognitionException as re:
             localctx.exception = re
@@ -435,22 +438,22 @@ class CPP14Parser ( Parser ):
         localctx = CPP14Parser.ProgramContentContext(self, self._ctx, self.state)
         self.enterRule(localctx, 6, self.RULE_programContent)
         try:
-            self.state = 65
+            self.state = 67
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [29]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 62
+                self.state = 64
                 self.includeStatement()
                 pass
             elif token in [1]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 63
+                self.state = 65
                 self.classDefinition()
                 pass
             elif token in [2, 10, 11, 12, 13, 14, 15, 16, 17, 18, 32]:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 64
+                self.state = 66
                 self.functionDefinition()
                 pass
             else:
@@ -523,27 +526,27 @@ class CPP14Parser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 67
-            self.match(CPP14Parser.Hash)
-            self.state = 68
-            self.match(CPP14Parser.Include)
             self.state = 69
-            self.match(CPP14Parser.LeftChevron)
+            self.match(CPP14Parser.Hash)
             self.state = 70
+            self.match(CPP14Parser.Include)
+            self.state = 71
+            self.match(CPP14Parser.LeftChevron)
+            self.state = 72
             self.match(CPP14Parser.Identifier)
-            self.state = 75
+            self.state = 77
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==27:
-                self.state = 71
+                self.state = 73
                 self.match(CPP14Parser.DoubleColon)
-                self.state = 72
+                self.state = 74
                 self.match(CPP14Parser.Identifier)
-                self.state = 77
+                self.state = 79
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 78
+            self.state = 80
             self.match(CPP14Parser.RightChevron)
         except RecognitionException as re:
             localctx.exception = re
@@ -611,29 +614,29 @@ class CPP14Parser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 80
-            self.match(CPP14Parser.Class)
-            self.state = 81
-            self.className()
             self.state = 82
+            self.match(CPP14Parser.Class)
+            self.state = 83
+            self.className()
+            self.state = 84
             self.match(CPP14Parser.LeftBrace)
-            self.state = 86
+            self.state = 88
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while (((_la) & ~0x3f) == 0 and ((1 << _la) & 4295490620) != 0):
-                self.state = 83
+                self.state = 85
                 self.classContent()
-                self.state = 88
+                self.state = 90
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 89
-            self.match(CPP14Parser.RightBrace)
             self.state = 91
+            self.match(CPP14Parser.RightBrace)
+            self.state = 93
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==25:
-                self.state = 90
+                self.state = 92
                 self.match(CPP14Parser.Semi)
 
 
@@ -682,7 +685,7 @@ class CPP14Parser ( Parser ):
         self.enterRule(localctx, 12, self.RULE_className)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 93
+            self.state = 95
             self.match(CPP14Parser.Identifier)
         except RecognitionException as re:
             localctx.exception = re
@@ -741,30 +744,30 @@ class CPP14Parser ( Parser ):
         localctx = CPP14Parser.ClassContentContext(self, self._ctx, self.state)
         self.enterRule(localctx, 14, self.RULE_classContent)
         try:
-            self.state = 99
+            self.state = 101
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,7,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 95
+                self.state = 97
                 self.accessSpecifier()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 96
+                self.state = 98
                 self.methodDeclaration()
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 97
+                self.state = 99
                 self.constructorDeclaration()
                 pass
 
             elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 98
+                self.state = 100
                 self.attributeDeclaration()
                 pass
 
@@ -824,14 +827,14 @@ class CPP14Parser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 101
+            self.state = 103
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 56) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
                 self.consume()
-            self.state = 102
+            self.state = 104
             self.match(CPP14Parser.Colon)
         except RecognitionException as re:
             localctx.exception = re
@@ -897,23 +900,23 @@ class CPP14Parser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 104
-            self.methodReturnType()
-            self.state = 105
-            self.methodName()
             self.state = 106
-            self.match(CPP14Parser.LeftPar)
+            self.methodReturnType()
+            self.state = 107
+            self.methodName()
             self.state = 108
+            self.match(CPP14Parser.LeftPar)
+            self.state = 110
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & 4295490564) != 0):
-                self.state = 107
+                self.state = 109
                 self.parameterList()
 
 
-            self.state = 110
+            self.state = 112
             self.match(CPP14Parser.RightPar)
-            self.state = 111
+            self.state = 113
             self.match(CPP14Parser.Semi)
         except RecognitionException as re:
             localctx.exception = re
@@ -961,7 +964,7 @@ class CPP14Parser ( Parser ):
         self.enterRule(localctx, 20, self.RULE_methodReturnType)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 113
+            self.state = 115
             self.returnType()
         except RecognitionException as re:
             localctx.exception = re
@@ -1008,7 +1011,7 @@ class CPP14Parser ( Parser ):
         self.enterRule(localctx, 22, self.RULE_methodName)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 115
+            self.state = 117
             self.match(CPP14Parser.Identifier)
         except RecognitionException as re:
             localctx.exception = re
@@ -1070,21 +1073,21 @@ class CPP14Parser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 117
+            self.state = 119
             self.className()
-            self.state = 118
-            self.match(CPP14Parser.LeftPar)
             self.state = 120
+            self.match(CPP14Parser.LeftPar)
+            self.state = 122
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & 4295490564) != 0):
-                self.state = 119
+                self.state = 121
                 self.parameterList()
 
 
-            self.state = 122
+            self.state = 124
             self.match(CPP14Parser.RightPar)
-            self.state = 123
+            self.state = 125
             self.match(CPP14Parser.Semi)
         except RecognitionException as re:
             localctx.exception = re
@@ -1102,8 +1105,8 @@ class CPP14Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def returnType(self):
-            return self.getTypedRuleContext(CPP14Parser.ReturnTypeContext,0)
+        def functionReturnType(self):
+            return self.getTypedRuleContext(CPP14Parser.FunctionReturnTypeContext,0)
 
 
         def Identifier(self):
@@ -1149,24 +1152,72 @@ class CPP14Parser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 125
-            self.returnType()
-            self.state = 126
-            self.match(CPP14Parser.Identifier)
             self.state = 127
-            self.match(CPP14Parser.LeftPar)
+            self.functionReturnType()
+            self.state = 128
+            self.match(CPP14Parser.Identifier)
             self.state = 129
+            self.match(CPP14Parser.LeftPar)
+            self.state = 131
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & 4295490564) != 0):
-                self.state = 128
+                self.state = 130
                 self.parameterList()
 
 
-            self.state = 131
+            self.state = 133
             self.match(CPP14Parser.RightPar)
-            self.state = 132
+            self.state = 134
             self.match(CPP14Parser.Semi)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class FunctionReturnTypeContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def returnType(self):
+            return self.getTypedRuleContext(CPP14Parser.ReturnTypeContext,0)
+
+
+        def getRuleIndex(self):
+            return CPP14Parser.RULE_functionReturnType
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFunctionReturnType" ):
+                listener.enterFunctionReturnType(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFunctionReturnType" ):
+                listener.exitFunctionReturnType(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitFunctionReturnType" ):
+                return visitor.visitFunctionReturnType(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def functionReturnType(self):
+
+        localctx = CPP14Parser.FunctionReturnTypeContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 28, self.RULE_functionReturnType)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 136
+            self.returnType()
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1214,20 +1265,20 @@ class CPP14Parser ( Parser ):
     def parameterType(self):
 
         localctx = CPP14Parser.ParameterTypeContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 28, self.RULE_parameterType)
+        self.enterRule(localctx, 30, self.RULE_parameterType)
         try:
-            self.state = 136
+            self.state = 140
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,11,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 134
+                self.state = 138
                 self.returnType()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 135
+                self.state = 139
                 self.className()
                 pass
 
@@ -1281,14 +1332,14 @@ class CPP14Parser ( Parser ):
     def attributeDeclaration(self):
 
         localctx = CPP14Parser.AttributeDeclarationContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 30, self.RULE_attributeDeclaration)
+        self.enterRule(localctx, 32, self.RULE_attributeDeclaration)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 138
+            self.state = 142
             self.returnType()
-            self.state = 139
+            self.state = 143
             self.match(CPP14Parser.Identifier)
-            self.state = 140
+            self.state = 144
             self.match(CPP14Parser.Semi)
         except RecognitionException as re:
             localctx.exception = re
@@ -1369,15 +1420,15 @@ class CPP14Parser ( Parser ):
     def returnType(self):
 
         localctx = CPP14Parser.ReturnTypeContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 32, self.RULE_returnType)
+        self.enterRule(localctx, 34, self.RULE_returnType)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 143
+            self.state = 147
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==10 or _la==11:
-                self.state = 142
+                self.state = 146
                 _la = self._input.LA(1)
                 if not(_la==10 or _la==11):
                     self._errHandler.recoverInline(self)
@@ -1386,53 +1437,53 @@ class CPP14Parser ( Parser ):
                     self.consume()
 
 
-            self.state = 154
+            self.state = 158
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [12]:
-                self.state = 145
+                self.state = 149
                 self.match(CPP14Parser.Bool)
                 pass
             elif token in [13]:
-                self.state = 146
+                self.state = 150
                 self.match(CPP14Parser.Char)
                 pass
             elif token in [14]:
-                self.state = 147
+                self.state = 151
                 self.match(CPP14Parser.Int)
                 pass
             elif token in [15]:
-                self.state = 148
+                self.state = 152
                 self.match(CPP14Parser.Float)
                 pass
             elif token in [16]:
-                self.state = 149
+                self.state = 153
                 self.match(CPP14Parser.Double)
                 pass
             elif token in [17]:
-                self.state = 150
+                self.state = 154
                 self.match(CPP14Parser.Long)
                 pass
             elif token in [18]:
-                self.state = 151
+                self.state = 155
                 self.match(CPP14Parser.Short)
                 pass
             elif token in [2]:
-                self.state = 152
+                self.state = 156
                 self.match(CPP14Parser.Void)
                 pass
             elif token in [32]:
-                self.state = 153
+                self.state = 157
                 self.undefinedReturnType()
                 pass
             else:
                 raise NoViableAltException(self)
 
-            self.state = 157
+            self.state = 161
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,14,self._ctx)
             if la_ == 1:
-                self.state = 156
+                self.state = 160
                 _la = self._input.LA(1)
                 if not(_la==30 or _la==31):
                     self._errHandler.recoverInline(self)
@@ -1492,21 +1543,21 @@ class CPP14Parser ( Parser ):
     def undefinedReturnType(self):
 
         localctx = CPP14Parser.UndefinedReturnTypeContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 34, self.RULE_undefinedReturnType)
+        self.enterRule(localctx, 36, self.RULE_undefinedReturnType)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 159
+            self.state = 163
             self.match(CPP14Parser.Identifier)
-            self.state = 164
+            self.state = 168
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==27:
-                self.state = 160
+                self.state = 164
                 self.match(CPP14Parser.DoubleColon)
-                self.state = 161
+                self.state = 165
                 self.match(CPP14Parser.Identifier)
-                self.state = 166
+                self.state = 170
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
@@ -1562,21 +1613,21 @@ class CPP14Parser ( Parser ):
     def parameterList(self):
 
         localctx = CPP14Parser.ParameterListContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 36, self.RULE_parameterList)
+        self.enterRule(localctx, 38, self.RULE_parameterList)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 167
+            self.state = 171
             self.parameter()
-            self.state = 172
+            self.state = 176
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==28:
-                self.state = 168
+                self.state = 172
                 self.match(CPP14Parser.Comma)
-                self.state = 169
+                self.state = 173
                 self.parameter()
-                self.state = 174
+                self.state = 178
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
@@ -1635,60 +1686,60 @@ class CPP14Parser ( Parser ):
     def parameter(self):
 
         localctx = CPP14Parser.ParameterContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 38, self.RULE_parameter)
+        self.enterRule(localctx, 40, self.RULE_parameter)
         try:
-            self.state = 195
+            self.state = 199
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,20,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 176
+                self.state = 180
                 self._errHandler.sync(self)
                 la_ = self._interp.adaptivePredict(self._input,17,self._ctx)
                 if la_ == 1:
-                    self.state = 175
+                    self.state = 179
                     self.match(CPP14Parser.Const)
 
 
-                self.state = 178
+                self.state = 182
                 self.parameterType()
-                self.state = 179
+                self.state = 183
                 self.match(CPP14Parser.Identifier)
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 182
+                self.state = 186
                 self._errHandler.sync(self)
                 la_ = self._interp.adaptivePredict(self._input,18,self._ctx)
                 if la_ == 1:
-                    self.state = 181
+                    self.state = 185
                     self.match(CPP14Parser.Const)
 
 
-                self.state = 184
+                self.state = 188
                 self.parameterType()
-                self.state = 185
+                self.state = 189
                 self.match(CPP14Parser.Ampersand)
-                self.state = 186
+                self.state = 190
                 self.match(CPP14Parser.Identifier)
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 189
+                self.state = 193
                 self._errHandler.sync(self)
                 la_ = self._interp.adaptivePredict(self._input,19,self._ctx)
                 if la_ == 1:
-                    self.state = 188
+                    self.state = 192
                     self.match(CPP14Parser.Const)
 
 
-                self.state = 191
+                self.state = 195
                 self.parameterType()
-                self.state = 192
+                self.state = 196
                 self.match(CPP14Parser.Star)
-                self.state = 193
+                self.state = 197
                 self.match(CPP14Parser.Identifier)
                 pass
 

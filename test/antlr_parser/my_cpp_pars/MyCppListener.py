@@ -31,8 +31,15 @@ class ClassDef:
     attributes: List[Attribute] = field(default_factory=list)
 
 @dataclass
+class Function:
+    returnType: str = ""
+    functionName: str = ""
+    params: List[Param] = field(default_factory=list)
+
+@dataclass
 class Program:
     classes: List[ClassDef] = field(default_factory=list)
+    functions: List[Function] = field(default_factory=list)
 
 class MyCppListener(CPP14Listener):
     def __init__(self):
@@ -41,6 +48,7 @@ class MyCppListener(CPP14Listener):
         self.method = None
         self.constructor = None
         self.attribute = None
+        self.function = None
         print("\n"*2)
         self.program = Program()
 
@@ -75,6 +83,7 @@ class MyCppListener(CPP14Listener):
             else: param.paramType += txt if ctx.getChildCount()-2 == i else txt + " "
         if self.method: self.method.params.append(param)
         elif self.constructor: self.constructor.params.append(param)
+        elif self.function: self.function.params.append(param)
     def exitMethodDeclaration(self, ctx): 
         self.classDef.methods.append(self.method)
         self.method = None
@@ -90,8 +99,22 @@ class MyCppListener(CPP14Listener):
 
     def exitClassDefinition(self, ctx):
         # print(self.classDef)
-        pprint.pp(self.classDef)
+        # pprint.pp(self.classDef)
         self.program.classes.append(self.classDef)
-
-
     # Exit class defintion
+
+    def enterFunctionDefinition(self, ctx):
+        self.function = Function()
+        self.function.functionName = ctx.getChild(1).getText()
+    def enterFunctionReturnType(self, ctx):
+        RT = ctx.getChild(0)
+        for i in range(ctx.getChildCount()):
+            txt = RT.getChild(i).getText()
+            self.function.returnType += txt if RT.getChildCount()-1 == i else txt + " "
+    def exitFunctionDefinition(self, ctx):
+        self.program.functions.append(self.function)
+        self.function = None
+
+    def exitProgram(self, ctx):
+        pprint.pp(self.program)
+
