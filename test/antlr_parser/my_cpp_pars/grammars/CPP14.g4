@@ -20,22 +20,27 @@ programContent
     ;
 
 includeStatement
-    : Hash Include LeftChevron Identifier (DoubleColon Identifier)* RightChevron
+    : Hash Include LeftChevron Identifier (DoubleColon Identifier )* (Dot Identifier)? RightChevron
     ;
 
 classDefinition
-    : Class className LeftBrace classContent* RightBrace Semi?
+    : Class className classDerivation? LeftBrace classContent* RightBrace Semi?
     ;
 
 className
     : Identifier
     ;
+classDerivation
+    : Colon (PublicAccess | ProtectedAccess | PrivateAccess) derivedClassName 
+    ;
+derivedClassName
+    : Identifier
+    ;
 
 classContent
     : accessSpecifier
-    | methodDeclaration
-    | constructorDeclaration
     | attributeDeclaration
+    | Virtual? (methodDeclaration | constructorDeclaration | destructorDeclaration)
     ;
 
 accessSpecifier
@@ -43,7 +48,10 @@ accessSpecifier
     ;
 
 methodDeclaration
-    : methodReturnType methodName LeftPar parameterList? RightPar Semi
+    : templateStatement? methodReturnType methodName LeftPar parameterList? RightPar Const? ( Override | (Equal (Digit|Identifier))? ) Semi
+    ;
+templateStatement
+    : Template LeftChevron Typename returnType RightChevron
     ;
 methodReturnType
     : returnType
@@ -52,7 +60,10 @@ methodName
     : Identifier
     ;
 constructorDeclaration
-    : className LeftPar parameterList? RightPar Semi
+    : className LeftPar parameterList? RightPar Const? (Equal (Digit|Identifier))? Semi
+    ;
+destructorDeclaration
+    : Tilde className LeftPar RightPar Const? (Equal (Digit|Identifier))? Semi
     ;
 
 functionDefinition
@@ -100,6 +111,10 @@ Ifndef:         'ifndef';
 Define:         'define';
 Endif:          'endif';
 Include:        'include';
+Virtual:        'virtual';
+Override:       'override';
+Template:       'template';
+Typename:       'typename';
 
 Static:         'static';
 Const:          'const';
@@ -123,12 +138,19 @@ Semi:           ';';
 Colon:          ':';
 DoubleColon:    '::';
 Comma:          ',';
+Dot:            '.';
 Hash:           '#';
 Ampersand:      '&';
 Star:           '*';
+Tilde:          '~';
+Equal:          '=';
 
 Identifier
     : [a-zA-Z] [a-zA-Z0-9_]*  
+    ;
+
+Digit
+    : [0-9]+
     ;
 
 Whitespace

@@ -71,6 +71,24 @@ class CPP14Listener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by CPP14Parser#classDerivation.
+    def enterClassDerivation(self, ctx:CPP14Parser.ClassDerivationContext):
+        pass
+
+    # Exit a parse tree produced by CPP14Parser#classDerivation.
+    def exitClassDerivation(self, ctx:CPP14Parser.ClassDerivationContext):
+        pass
+
+
+    # Enter a parse tree produced by CPP14Parser#derivedClassName.
+    def enterDerivedClassName(self, ctx:CPP14Parser.DerivedClassNameContext):
+        pass
+
+    # Exit a parse tree produced by CPP14Parser#derivedClassName.
+    def exitDerivedClassName(self, ctx:CPP14Parser.DerivedClassNameContext):
+        pass
+
+
     # Enter a parse tree produced by CPP14Parser#classContent.
     def enterClassContent(self, ctx:CPP14Parser.ClassContentContext):
         pass
@@ -98,6 +116,15 @@ class CPP14Listener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by CPP14Parser#templateStatement.
+    def enterTemplateStatement(self, ctx:CPP14Parser.TemplateStatementContext):
+        pass
+
+    # Exit a parse tree produced by CPP14Parser#templateStatement.
+    def exitTemplateStatement(self, ctx:CPP14Parser.TemplateStatementContext):
+        pass
+
+
     # Enter a parse tree produced by CPP14Parser#methodReturnType.
     def enterMethodReturnType(self, ctx:CPP14Parser.MethodReturnTypeContext):
         pass
@@ -122,6 +149,15 @@ class CPP14Listener(ParseTreeListener):
 
     # Exit a parse tree produced by CPP14Parser#constructorDeclaration.
     def exitConstructorDeclaration(self, ctx:CPP14Parser.ConstructorDeclarationContext):
+        pass
+
+
+    # Enter a parse tree produced by CPP14Parser#destructorDeclaration.
+    def enterDestructorDeclaration(self, ctx:CPP14Parser.DestructorDeclarationContext):
+        pass
+
+    # Exit a parse tree produced by CPP14Parser#destructorDeclaration.
+    def exitDestructorDeclaration(self, ctx:CPP14Parser.DestructorDeclarationContext):
         pass
 
 

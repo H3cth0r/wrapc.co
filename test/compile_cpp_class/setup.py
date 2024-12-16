@@ -1,8 +1,8 @@
 from setuptools import setup, Extension
 
 module = Extension(
-    'example',
-    sources=['example.cpp'],
+    'advanced_example',
+    sources=['secondExample.cpp'],
     language='c++',
     extra_compile_args=['-std=c++11']  # Enable C++11 for string support
 )

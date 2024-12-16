@@ -7,7 +7,7 @@ from CPP14Lexer import CPP14Lexer
 from CPP14Parser import CPP14Parser
 
 if __name__ == "__main__":
-    path = "./examples/test_1.h"
+    path = "./examples/test_2.h"
     with open(path, "r") as cpp_f: input_stream = InputStream(cpp_f.read())
     lexer = CPP14Lexer(input_stream)
     token_stream = CommonTokenStream(lexer)

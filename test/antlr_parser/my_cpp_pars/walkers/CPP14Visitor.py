@@ -44,6 +44,16 @@ class CPP14Visitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by CPP14Parser#classDerivation.
+    def visitClassDerivation(self, ctx:CPP14Parser.ClassDerivationContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by CPP14Parser#derivedClassName.
+    def visitDerivedClassName(self, ctx:CPP14Parser.DerivedClassNameContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by CPP14Parser#classContent.
     def visitClassContent(self, ctx:CPP14Parser.ClassContentContext):
         return self.visitChildren(ctx)
@@ -59,6 +69,11 @@ class CPP14Visitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by CPP14Parser#templateStatement.
+    def visitTemplateStatement(self, ctx:CPP14Parser.TemplateStatementContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by CPP14Parser#methodReturnType.
     def visitMethodReturnType(self, ctx:CPP14Parser.MethodReturnTypeContext):
         return self.visitChildren(ctx)
@@ -71,6 +86,11 @@ class CPP14Visitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by CPP14Parser#constructorDeclaration.
     def visitConstructorDeclaration(self, ctx:CPP14Parser.ConstructorDeclarationContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by CPP14Parser#destructorDeclaration.
+    def visitDestructorDeclaration(self, ctx:CPP14Parser.DestructorDeclarationContext):
         return self.visitChildren(ctx)
 
 
