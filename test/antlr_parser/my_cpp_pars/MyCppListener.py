@@ -1,7 +1,7 @@
 import sys
 from dataclasses import dataclass, field
 from typing import List
-import pprint
+# import pprint
 sys.path.append('./walkers')
 from CPP14Listener import CPP14Listener
 
@@ -116,5 +116,6 @@ class MyCppListener(CPP14Listener):
         self.function = None
 
     def exitProgram(self, ctx):
-        pprint.pp(self.program)
+        # pprint.pp(self.program)
+        pass
 
