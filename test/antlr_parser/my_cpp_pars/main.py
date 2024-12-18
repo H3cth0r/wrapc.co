@@ -103,6 +103,102 @@ static void (_class.className)_dealloc(Py{_class.className}* self) {{
         self.output += f"""
 static PyObject* {_class.className}_{method.methodName}(Py{_class.className}* self, PyObject* args) {{
         """
+        if method.params: 
+            self.output += f"""
+    {parse_vars};
+    if (!PyArg_ParseTuple(args, "{format_str}", {parse_vars})) {{
+        return nullptr;
+    }}
+    {parse_code}
+            """
+        if method.returnType == "void":
+            self.output += f"""
+    self->cpp_instance->{method.methodName}({", ".join(p.paramName for p in method.params)});
+    Py_RETURN_NONE;
+            """
+        else:
+            self.output += f"""
+    auto result = self->cpp_instance->{method.methodName}({", ".join(p.paramName for p in method.params)});
+    return {converter}(result{"" if "std::string" not in method.returnType else ".c_str()"});
+            """
+        self.output += "}\n"
+
+    def _generateMethods(self, _class):
+        method_defs = []
+        for method in _class.methods:
+            self._generateMethod(_class, method)
+            method_defs.append(
+                f'{{"{"}{method.methodName}{"}"}, '
+                f'(PyCFunction){_class.className}_{method.methodName}, '
+                f'{"METH_VARARGS" if method.params else "METH_NOARGS"}, '
+                f'"{"Execute " + method.methodName}"}}'
+            )
+        self.output += f"""
+static PyMethodDef {_class.className}_methods[] = {{
+    {",\\n    ".join(method_defs)},
+    {{nullptr}}
+}};
+        """
+    def _generateTypeObject(self, _class):
+        self.output += f"""
+static PyTypeObject {_class.className}Type = {{
+    PyVarObject_HEAD_INIT(nullptr, 0)
+    .tp_name = "example.{_class.className}",
+    .tp_basicsize = sizeof(Py{_class.className}),
+    .tp_itemsize = 0,
+    .tp_dealloc = (destructor){_class.className}_dealloc,
+    .tp_flags = Py_TPFLAGS_DEFAULT,
+    .tp_doc = "{_class.className} objects",
+    .tp_methods = {_class.className}_methods,
+    .tp_new = {_class.className}_new,
+}};
+        """
+    def generate(self):
+        self._generateObjectStructures()
+
+        for _class in self.program.classes:
+            if _class.constructors: self._generateConstructor(_class)
+            self._generateMethods(_class)
+            self._generateTypeObject(_class)
+        self._generateModuleInit(self):
+
+    def _generateModuleInit(self):
+        self.output += """
+static PyModuleDef examplemodule = {
+    PyModuleDef_HEAD_INIT,
+    "example",
+    "Example module",
+    -1,
+    nullptr
+};
+
+PyMODINIT_FUNC PyInit_example(void) {
+        """
+        for _class in self.program.classes:
+            self.output += f"""
+    if (PyType_Ready(&{_class.className}Type) < 0) {{
+        return nullptr;
+    }}
+            """
+        self.output += """
+    PyObject* m = PyModule_Create(&examplemodule);
+    if (!m) {
+        return nullptr;
+    }
+        """
+        for _class in self.program.classes:
+            self.output += f"""
+    Py_INCREF(&{_class.className}Type);
+    if (PyModule_AddObject(m, "{_class.className}", (PyObject*)&{_class.className}Type) < 0) {{
+        Py_DECREF(&{_class.className}Type);
+        Py_DECREF(m);
+        return nullptr;
+    }}
+            """
+        self.output += """
+    return m;
+}
+        """
 
 if __name__ == "__main__":
     path = "./examples/test_2.h"
