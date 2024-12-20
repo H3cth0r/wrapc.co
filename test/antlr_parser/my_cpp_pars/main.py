@@ -1,7 +1,7 @@
 from antlr4 import InputStream, CommonTokenStream, ParseTreeWalker
 from MyCppListener import MyCppListener
 
-from dataclasses import dataclass 
+from typing import List, Dict, Optional, Tuple
 
 import pprint
 import sys
@@ -25,7 +25,9 @@ class ParserHandler:
 class ExtensionGenerator:
     def __init__(self, program):
         self.program =  program
-        self.output = """"""
+        self.output = """
+        #include <Python.h>
+        """
         self.type_conversions = {
             'int': ('PyLong_AsLong', 'PyLong_FromLong', 'i'),
             'char*': ('PyUnicode_AsUTF8', 'PyUnicode_FromString', 's'),
@@ -59,6 +61,25 @@ class ExtensionGenerator:
                     parse_code.append(f"std::string {param.paramName}({param.paramName}_str);")
                 else: parse_vars.append(f"{param.paramType} {param.paramName}")
         return format_str, ", ".join(parse_vars), "\n            ".join(parse_code)
+    def _generate_args_param_parsing(self, params: List) -> Tuple[str, str]:
+        """generate parameter parsing code and format string for PyArg_ParseTuple"""
+        format_str = ""
+        parse_vars = []
+        parse_code = []
+        parse_PyArgs = []
+
+        for param in params:
+            format_char = self._get_type_format(param.paramType)
+            if format_char:
+                format_str += format_char
+                if "std::string" in param.paramType:
+                    parse_vars.append(f"const char* {param.paramName}_str")
+                    parse_PyArgs.append(f"& {param.paramName}_str")
+                    parse_code.append(f"std::string {param.paramName}({param.paramName}_str);")
+                else: 
+                    parse_vars.append(f"{param.paramType} {param.paramName}")
+                    parse_PyArgs.append(f"& {param.paramName}")
+        return format_str, ", ".join(parse_vars), "\n            ".join(parse_code), ", ".join(parse_PyArgs)
     def _generateObjectStructures(self):
         for _class in self.program.classes:
             self.output += f"""
@@ -68,13 +89,13 @@ typedef struct {{
 }} Py{_class.className};
             """
     def _generateConstructor(self, _class):
-        format_str, parse_vars, parse_code = self._generate_param_parsing(_class.constructors[0].params)
+        format_str, parse_vars, parse_code, parse_PyArgs = self._generate_args_param_parsing(_class.constructors[0].params)
         self.output += f"""
 static PyObject* {_class.className}_new(PyTypeObject* type, PyObject* args, PyObject* kwds) {{
     Py{_class.className}* self = (Py{_class.className}*)type->tp_alloc(type, 0);
     if (self) {{
         {parse_vars};
-        if (!PyArg_ParseTuple(args, "{format_str}", {parse_vars})) {{
+        if (!PyArg_ParseTuple(args, "{format_str}", {parse_PyArgs})) {{
             Py_DECREF(self);
             return nullptr;
         }}
@@ -98,7 +119,7 @@ static void (_class.className)_dealloc(Py{_class.className}* self) {{
 }}
         """
     def _generateMethod(self, _class, method): 
-        format_str, parse_vars, parse_code = self._generate_param_parsing(method.params)
+        format_str, parse_vars, parse_code, parse_PyArgs= self._generate_args_param_parsing(method.params)
         converter = self._get_type_converter(method.returnType, to_python=True)
         self.output += f"""
 static PyObject* {_class.className}_{method.methodName}(Py{_class.className}* self, PyObject* args) {{
@@ -106,7 +127,7 @@ static PyObject* {_class.className}_{method.methodName}(Py{_class.className}* se
         if method.params: 
             self.output += f"""
     {parse_vars};
-    if (!PyArg_ParseTuple(args, "{format_str}", {parse_vars})) {{
+    if (!PyArg_ParseTuple(args, "{format_str}", {parse_PyArgs})) {{
         return nullptr;
     }}
     {parse_code}
@@ -128,15 +149,17 @@ static PyObject* {_class.className}_{method.methodName}(Py{_class.className}* se
         for method in _class.methods:
             self._generateMethod(_class, method)
             method_defs.append(
-                f'{{"{"}{method.methodName}{"}"}, '
+                f'{{"{method.methodName}", '
                 f'(PyCFunction){_class.className}_{method.methodName}, '
                 f'{"METH_VARARGS" if method.params else "METH_NOARGS"}, '
-                f'"{"Execute " + method.methodName}"}}'
+                f'"Execute {method.methodName}"}}'
             )
+        
+        method_list = ",\n    ".join(method_defs)
         self.output += f"""
 static PyMethodDef {_class.className}_methods[] = {{
-    {",\\n    ".join(method_defs)},
-    {{nullptr}}
+    {method_list},
+    {{NULL, NULL, 0, NULL}}
 }};
         """
     def _generateTypeObject(self, _class):
@@ -160,7 +183,7 @@ static PyTypeObject {_class.className}Type = {{
             if _class.constructors: self._generateConstructor(_class)
             self._generateMethods(_class)
             self._generateTypeObject(_class)
-        self._generateModuleInit(self):
+        self._generateModuleInit()
 
     def _generateModuleInit(self):
         self.output += """

@@ -2,7 +2,7 @@ from setuptools import setup, Extension
 
 module = Extension(
     'advanced_example',
-    sources=['secondExample.cpp'],
+    sources=['thirdExample.cpp'],
     language='c++',
     extra_compile_args=['-std=c++11']  # Enable C++11 for string support
 )
@@ -13,3 +13,4 @@ setup(
     description='Example module with multiple C++ classes',
     ext_modules=[module]
 )
+
