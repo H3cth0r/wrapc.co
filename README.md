@@ -46,4 +46,6 @@ twine upload dist/*
 
 ## TODO
 - Fix wrapper generator
+    - There are syntax errors stile.
+    - add functions wrapping
 - Create C grammar wrapper
