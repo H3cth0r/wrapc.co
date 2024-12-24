@@ -9,6 +9,7 @@
 // Base class with virtual functions
 class Animal {
 public:
+    Animal();
     virtual ~Animal() = default;
 
     // Pure virtual function to enforce implementation in derived classes

@@ -48,4 +48,5 @@ twine upload dist/*
 - Fix wrapper generator
     - There are syntax errors stile.
     - add functions wrapping
+    - Add a default constructor when class has no constructor.
 - Create C grammar wrapper

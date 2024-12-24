@@ -11,6 +11,33 @@ typedef struct {
     Dog* cpp_instance;
 } PyDog;
             
+static PyObject* Animal_new(PyTypeObject* type, PyObject* args, PyObject* kwds) {
+    PyAnimal* self = (PyAnimal*)type->tp_alloc(type, 0);
+    if (self) {
+        ;
+        if (!PyArg_ParseTuple(args, "", )) {
+            Py_DECREF(self);
+            return nullptr;
+        }
+        
+        try {
+            self->cpp_instance = new Animal();
+        } catch (const std::exception& e) {
+            PyErr_SetString(PyExc_RuntimeError, e.what());
+            Py_DECREF(self);
+            return nullptr;
+        }
+    }
+    return (PyObject*)self;
+}
+
+static void (_class.className)_dealloc(PyAnimal* self) {
+    if (self->cpp_instance) {
+        delete self->cpp_instance;
+    }
+    Py_TYPE(self)->tp_free((PyObject*)self);
+}
+        
 static PyObject* Animal_speak(PyAnimal* self, PyObject* args) {
         
     auto result = self->cpp_instance->speak();
