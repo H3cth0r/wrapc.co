@@ -38,8 +38,8 @@ public:
     const std::string& getName() const;
 
     // Template method to calculate age in different units
-    template<typename T>
-    T getAgeInDifferentUnit(T multiplier) const;
+    // template<typename int>
+    int getAgeInDifferentUnit(int multiplier) const;
     // T getAgeInDifferentUnit(T multiplier) const {
     //     return static_cast<T>(getAge()) * multiplier;
     // }

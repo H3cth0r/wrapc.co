@@ -1,5 +1,5 @@
 from antlr4 import InputStream, CommonTokenStream, ParseTreeWalker
-from MyCppListener import MyCppListener
+from MyCppListener import MyCppListener, Constructor
 
 from typing import List, Dict, Optional, Tuple
 
@@ -37,15 +37,17 @@ class ExtensionGenerator:
             'FILE*': (None, None, 'O'),
             'void': (None, None, None),
             'std::string': ('PyUnicode_AsUTF8', 'PyUnicode_FromString', 's'),
-            'const std::string&': ('PyUnicode_AsUTF8', 'PyUnicode_FromString', 's')
+            'const std::string &': ('PyUnicode_AsUTF8', 'PyUnicode_FromString', 's')
         }
+        self.classes_to_parse = ["Dog"]
     def _get_type_format(self, param_type: str) -> str:
         """return format character for PyArg_ParseTuple"""
         return self.type_conversions.get(param_type, (None, None, 'O'))[2]
     def _get_type_converter(self, param_type: str, to_python: bool = True) -> str:
         """return appropiate type converter function"""
         converters =  self.type_conversions.get(param_type, (None, None, None))
-        return converters[1] if to_python else converters[0]
+        to_convert = converters[1] if to_python else converters[0]
+        return to_convert if to_convert is not None else ""
     def _generate_param_parsing(self, params: List) -> Tuple[str, str]:
         """generate parameter parsing code and format string for PyArg_ParseTuple"""
         format_str = ""
@@ -79,7 +81,7 @@ class ExtensionGenerator:
                 else: 
                     parse_vars.append(f"{param.paramType} {param.paramName}")
                     parse_PyArgs.append(f"& {param.paramName}")
-        return format_str, ", ".join(parse_vars), "\n            ".join(parse_code), ", ".join(parse_PyArgs)
+        return format_str, "; ".join(parse_vars), "\n            ".join(parse_code), ", ".join(parse_PyArgs)
     def _generateObjectStructures(self):
         for _class in self.program.classes:
             self.output += f"""
@@ -90,15 +92,21 @@ typedef struct {{
             """
     def _generateConstructor(self, _class):
         format_str, parse_vars, parse_code, parse_PyArgs = self._generate_args_param_parsing(_class.constructors[0].params)
-        self.output += f"""
-static PyObject* {_class.className}_new(PyTypeObject* type, PyObject* args, PyObject* kwds) {{
-    Py{_class.className}* self = (Py{_class.className}*)type->tp_alloc(type, 0);
-    if (self) {{
-        {parse_vars};
+        args_part = ""
+        if parse_PyArgs != "":
+            args_part = f"""
         if (!PyArg_ParseTuple(args, "{format_str}", {parse_PyArgs})) {{
             Py_DECREF(self);
             return nullptr;
         }}
+            """
+        parse_vars = parse_vars + ";" if parse_vars!= "" else parse_vars
+        self.output += f"""
+static PyObject* {_class.className}_new(PyTypeObject* type, PyObject* args, PyObject* kwds) {{
+    Py{_class.className}* self = (Py{_class.className}*)type->tp_alloc(type, 0);
+    if (self) {{
+        {parse_vars}
+        {args_part}
         {parse_code}
         try {{
             self->cpp_instance = new {_class.className}({", ".join(p.paramName for p in _class.constructors[0].params)});
@@ -111,7 +119,7 @@ static PyObject* {_class.className}_new(PyTypeObject* type, PyObject* args, PyOb
     return (PyObject*)self;
 }}
 
-static void (_class.className)_dealloc(Py{_class.className}* self) {{
+static void {_class.className}_dealloc(Py{_class.className}* self) {{
     if (self->cpp_instance) {{
         delete self->cpp_instance;
     }}
@@ -120,6 +128,7 @@ static void (_class.className)_dealloc(Py{_class.className}* self) {{
         """
     def _generateMethod(self, _class, method): 
         format_str, parse_vars, parse_code, parse_PyArgs= self._generate_args_param_parsing(method.params)
+        print("return type: " + method.returnType + "\tmethod: " + method.methodName)
         converter = self._get_type_converter(method.returnType, to_python=True)
         self.output += f"""
 static PyObject* {_class.className}_{method.methodName}(Py{_class.className}* self, PyObject* args) {{
@@ -180,7 +189,11 @@ static PyTypeObject {_class.className}Type = {{
         self._generateObjectStructures()
 
         for _class in self.program.classes:
+            if _class.className not in self.classes_to_parse: continue
             if _class.constructors: self._generateConstructor(_class)
+            else:
+                _class.constructors.append(Constructor())
+                self._generateConstructor(_class)
             self._generateMethods(_class)
             self._generateTypeObject(_class)
         self._generateModuleInit()
@@ -198,6 +211,7 @@ static PyModuleDef examplemodule = {
 PyMODINIT_FUNC PyInit_example(void) {
         """
         for _class in self.program.classes:
+            if _class.className not in self.classes_to_parse: continue
             self.output += f"""
     if (PyType_Ready(&{_class.className}Type) < 0) {{
         return nullptr;
@@ -210,6 +224,7 @@ PyMODINIT_FUNC PyInit_example(void) {
     }
         """
         for _class in self.program.classes:
+            if _class.className not in self.classes_to_parse: continue
             self.output += f"""
     Py_INCREF(&{_class.className}Type);
     if (PyModule_AddObject(m, "{_class.className}", (PyObject*)&{_class.className}Type) < 0) {{

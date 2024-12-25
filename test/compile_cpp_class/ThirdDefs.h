@@ -9,6 +9,7 @@
 // Base class with virtual functions
 class Animal {
 public:
+    Animal();
     virtual ~Animal() = default;
 
     // Pure virtual function to enforce implementation in derived classes
@@ -37,8 +38,8 @@ public:
     const std::string& getName() const;
 
     // Template method to calculate age in different units
-    template<typename T>
-    T getAgeInDifferentUnit(T multiplier) const;
+    // template<typename T>
+    int getAgeInDifferentUnit(int multiplier) const;
     // T getAgeInDifferentUnit(T multiplier) const {
     //     return static_cast<T>(getAge()) * multiplier;
     // }
