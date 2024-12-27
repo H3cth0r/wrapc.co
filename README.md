@@ -49,4 +49,5 @@ twine upload dist/*
     - There are syntax errors stile.
     - add functions wrapping
     - Add a default constructor when class has no constructor.
+    - Fix typing, to manage spaces between pointers and references.
 - Create C grammar wrapper
