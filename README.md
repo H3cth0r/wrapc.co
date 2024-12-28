@@ -51,3 +51,8 @@ twine upload dist/*
     - Add a default constructor when class has no constructor.
     - Fix typing, to manage spaces between pointers and references.
 - Create C grammar wrapper
+
+
+## NOTES
+Don't forget that this the setup file should also include
+the implementation.
