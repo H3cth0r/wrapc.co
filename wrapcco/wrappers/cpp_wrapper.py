@@ -18,12 +18,11 @@ class ParserHandlerCpp:
         walker.walk(self.listener, tree)
         self.program    = self.listener.program
 
-
 class CppWrapper:
-    def __init__(self, program):
+    def __init__(self, program, to_parse=[]):
         self.program =  program
         self.output = """
-        #include <Python.h>
+#include <Python.h>
         """
         self.type_conversions = {
             'int': ('PyLong_AsLong', 'PyLong_FromLong', 'i'),
@@ -36,7 +35,7 @@ class CppWrapper:
             'std::string': ('PyUnicode_AsUTF8', 'PyUnicode_FromString', 's'),
             'const std::string &': ('PyUnicode_AsUTF8', 'PyUnicode_FromString', 's')
         }
-        self.classes_to_parse = ["Dog"]
+        self.to_parse = to_parse
     def _get_type_format(self, param_type: str) -> str:
         """return format character for PyArg_ParseTuple"""
         return self.type_conversions.get(param_type, (None, None, 'O'))[2]
@@ -186,7 +185,7 @@ static PyTypeObject {_class.className}Type = {{
         self._generateObjectStructures()
 
         for _class in self.program.classes:
-            if _class.className not in self.classes_to_parse: continue
+            if _class.className not in self.to_parse: continue
             if _class.constructors: self._generateConstructor(_class)
             else:
                 _class.constructors.append(Constructor())
@@ -208,7 +207,7 @@ static PyModuleDef examplemodule = {
 PyMODINIT_FUNC PyInit_example(void) {
         """
         for _class in self.program.classes:
-            if _class.className not in self.classes_to_parse: continue
+            if _class.className not in self.to_parse: continue
             self.output += f"""
     if (PyType_Ready(&{_class.className}Type) < 0) {{
         return nullptr;
@@ -221,7 +220,7 @@ PyMODINIT_FUNC PyInit_example(void) {
     }
         """
         for _class in self.program.classes:
-            if _class.className not in self.classes_to_parse: continue
+            if _class.className not in self.to_parse: continue
             self.output += f"""
     Py_INCREF(&{_class.className}Type);
     if (PyModule_AddObject(m, "{_class.className}", (PyObject*)&{_class.className}Type) < 0) {{
