@@ -19,13 +19,16 @@ class ParserHandlerCpp:
         self.program    = self.listener.program
 
 class CppWrapper:
-    def __init__(self, program, to_parse=[]):
+    def __init__(self, program, filePath, output_name, to_parse=[]):
         self.program =  program
-        self.output = """
+        self.output_name = output_name
+        self.output = f'''
 #include <Python.h>
-        """
+#include "{filePath}"
+        '''
         self.type_conversions = {
             'int': ('PyLong_AsLong', 'PyLong_FromLong', 'i'),
+            'double': ('PyFloat_AsDouble', 'PyFloat_FromDouble', 'd'),
             'char*': ('PyUnicode_AsUTF8', 'PyUnicode_FromString', 's'),
             'size_t': ('PyLong_AsSize_t', 'PyLong_FromSize_t', 'n'),
             'uint8_t*': ('PyBytes_AsString', 'PyBytes_FromStringAndSize', 'y#'),
@@ -171,7 +174,7 @@ static PyMethodDef {_class.className}_methods[] = {{
         self.output += f"""
 static PyTypeObject {_class.className}Type = {{
     PyVarObject_HEAD_INIT(nullptr, 0)
-    .tp_name = "example.{_class.className}",
+    .tp_name = "{self.output_name}.{_class.className}",
     .tp_basicsize = sizeof(Py{_class.className}),
     .tp_itemsize = 0,
     .tp_dealloc = (destructor){_class.className}_dealloc,
@@ -195,16 +198,16 @@ static PyTypeObject {_class.className}Type = {{
         self._generateModuleInit()
 
     def _generateModuleInit(self):
-        self.output += """
-static PyModuleDef examplemodule = {
+        self.output += f"""
+static PyModuleDef {self.output_name}module = {{
     PyModuleDef_HEAD_INIT,
-    "example",
-    "Example module",
+    "{self.output_name}",
+    "{self.output_name} module",
     -1,
     nullptr
-};
+}};
 
-PyMODINIT_FUNC PyInit_example(void) {
+PyMODINIT_FUNC PyInit_{self.output_name}(void) {{
         """
         for _class in self.program.classes:
             if _class.className not in self.to_parse: continue
@@ -213,11 +216,11 @@ PyMODINIT_FUNC PyInit_example(void) {
         return nullptr;
     }}
             """
-        self.output += """
-    PyObject* m = PyModule_Create(&examplemodule);
-    if (!m) {
+        self.output += f"""
+    PyObject* m = PyModule_Create(&{self.output_name}module);
+    if (!m) {{
         return nullptr;
-    }
+    }}
         """
         for _class in self.program.classes:
             if _class.className not in self.to_parse: continue

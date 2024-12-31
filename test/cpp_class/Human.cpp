@@ -1,6 +1,7 @@
 #include "Human.h"
 #include <sstream>
 #include <iomanip>
+#include <string>
 
 Human::Human(const std::string& name, int age, double height, double weight)
   : name(name), age(age), height(height), weight(weight) {}
@@ -14,11 +15,11 @@ int Human::getAge() const {
     return age;
 }
 
-int Human::getHeight() const {
+double Human::getHeight() const {
     return height;
 }
 
-int Human::getWeight() const {
+double Human::getWeight() const {
     return weight;
 }
 // Setters
