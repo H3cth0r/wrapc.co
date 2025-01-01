@@ -12,7 +12,7 @@ static PyObject* Human_new(PyTypeObject* type, PyObject* args, PyObject* kwds) {
     if (self) {
         const char* name_str; int age; double height; double weight;
         
-        if (!PyArg_ParseTuple(args, "Oidd", & name_str, & age, & height, & weight)) {
+        if (!PyArg_ParseTuple(args, "sidd", & name_str, & age, & height, & weight)) {
             Py_DECREF(self);
             return nullptr;
         }
@@ -63,7 +63,7 @@ static PyObject* Human_getWeight(PyHuman* self, PyObject* args) {
 static PyObject* Human_setName(PyHuman* self, PyObject* args) {
         
     const char* name_str;
-    if (!PyArg_ParseTuple(args, "O", & name_str)) {
+    if (!PyArg_ParseTuple(args, "s", & name_str)) {
         return nullptr;
     }
     std::string name(name_str);

@@ -36,11 +36,12 @@ class CppWrapper:
             'FILE*': (None, None, 'O'),
             'void': (None, None, None),
             'std::string': ('PyUnicode_AsUTF8', 'PyUnicode_FromString', 's'),
-            'const std::string &': ('PyUnicode_AsUTF8', 'PyUnicode_FromString', 's')
+            'const std::string&': ('PyUnicode_AsUTF8', 'PyUnicode_FromString', 's')
         }
         self.to_parse = to_parse
     def _get_type_format(self, param_type: str) -> str:
         """return format character for PyArg_ParseTuple"""
+        print("The type: " + param_type)
         return self.type_conversions.get(param_type, (None, None, 'O'))[2]
     def _get_type_converter(self, param_type: str, to_python: bool = True) -> str:
         """return appropiate type converter function"""
@@ -127,7 +128,7 @@ static void {_class.className}_dealloc(Py{_class.className}* self) {{
         """
     def _generateMethod(self, _class, method): 
         format_str, parse_vars, parse_code, parse_PyArgs= self._generate_args_param_parsing(method.params)
-        print("return type: " + method.returnType + "\tmethod: " + method.methodName)
+        # print("return type: " + method.returnType + "\tmethod: " + method.methodName)
         converter = self._get_type_converter(method.returnType, to_python=True)
         self.output += f"""
 static PyObject* {_class.className}_{method.methodName}(Py{_class.className}* self, PyObject* args) {{

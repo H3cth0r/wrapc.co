@@ -51,6 +51,8 @@ twine upload dist/*
     - Fix typing, to manage spaces between pointers and references.
 - Create C grammar wrapper
 
+- Fix _get_typpe_format to o manage spaces and types with conts and other things
+
 
 ## NOTES
 Don't forget that this the setup file should also include
