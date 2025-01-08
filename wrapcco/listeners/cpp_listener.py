@@ -7,6 +7,7 @@ from wrapcco.walkers.CPPListener import CPPListener
 class Param:
     paramType:          str = ""
     paramName:          str = ""
+    paramConst:         str = None
 @dataclass
 class Method:
     accessSpecifier:    str = ""
@@ -78,6 +79,7 @@ class CppListener(CPPListener):
         for i in range(ctx.getChildCount()):
             txt = ctx.getChild(i).getText()
             if i == ctx.getChildCount()-1: param.paramName += txt
+            elif i == 0 and ctx.getChildCount() > 2: param.paramConst = txt
             else: param.paramType += txt if ctx.getChildCount()-2 == i else txt + " "
         if self.method: self.method.params.append(param)
         elif self.constructor: self.constructor.params.append(param)

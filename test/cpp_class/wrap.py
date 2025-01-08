@@ -6,7 +6,7 @@ wrapper = Wrapper(
         to_include=["Human"],
         output_name="human_extension",
         output_path="./",
-        languaje="c++",
+        language="c++",
 )
 wrapper.generate()
 # print(wrapper.wrapper.program)

@@ -32,17 +32,17 @@ class CppWrapper:
             'char*': ('PyUnicode_AsUTF8', 'PyUnicode_FromString', 's'),
             'size_t': ('PyLong_AsSize_t', 'PyLong_FromSize_t', 'n'),
             'uint8_t*': ('PyBytes_AsString', 'PyBytes_FromStringAndSize', 'y#'),
-            'const char*': ('PyUnicode_AsUTF8', 'PyUnicode_FromString', 's'),
+            # 'const char*': ('PyUnicode_AsUTF8', 'PyUnicode_FromString', 's'),
+            'char*': ('PyUnicode_AsUTF8', 'PyUnicode_FromString', 's'),
             'FILE*': (None, None, 'O'),
             'void': (None, None, None),
             'std::string': ('PyUnicode_AsUTF8', 'PyUnicode_FromString', 's'),
-            'const std::string&': ('PyUnicode_AsUTF8', 'PyUnicode_FromString', 's')
+            'std::string&': ('PyUnicode_AsUTF8', 'PyUnicode_FromString', 's')
         }
         self.to_parse = to_parse
     def _get_type_format(self, param_type: str) -> str:
         """return format character for PyArg_ParseTuple"""
-        print("The type: " + param_type)
-        return self.type_conversions.get(param_type, (None, None, 'O'))[2]
+        return self.type_conversions.get(param_type.replace(" ", ""), (None, None, 'O'))[2]
     def _get_type_converter(self, param_type: str, to_python: bool = True) -> str:
         """return appropiate type converter function"""
         converters =  self.type_conversions.get(param_type, (None, None, None))
