@@ -44,14 +44,10 @@ twine upload dist/*
 ```
 
 ## TODO
-- Fix wrapper generator
-    - There are syntax errors stile.
-    - add functions wrapping
-    - Add a default constructor when class has no constructor.
-    - Fix typing, to manage spaces between pointers and references.
+- Add a default constructor when class has no constructor.
 - Create C grammar wrapper
+- Add support for arrays for params and return types.
 
-- Fix _get_typpe_format to o manage spaces and types with conts and other things
 
 
 ## NOTES
