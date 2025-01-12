@@ -98,6 +98,7 @@ parameter
     : Const? parameterType Identifier
     | Const? parameterType Ampersand Identifier
     | Const? parameterType Star Identifier
+    | Const? parameterType Identifier RightPar Digit LeftPar
     ;
 
 

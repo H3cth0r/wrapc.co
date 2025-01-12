@@ -76,6 +76,7 @@ class MyCppListener(CPP14Listener):
             txt = RT.getChild(i).getText()
             self.method.returnType += txt if RT.getChildCount()-1 == i else txt + " "
     def enterParameter(self, ctx):
+        # TODO check new logic given array intro
         param = Param()
         for i in range(ctx.getChildCount()):
             txt = ctx.getChild(i).getText()

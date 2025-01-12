@@ -48,8 +48,6 @@ twine upload dist/*
 - Create C grammar wrapper
 - Add support for arrays for params and return types.
 
-
-
 ## NOTES
 Don't forget that this the setup file should also include
 the implementation.
