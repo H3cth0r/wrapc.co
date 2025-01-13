@@ -47,6 +47,7 @@ twine upload dist/*
 - Add a default constructor when class has no constructor.
 - Create C grammar wrapper
 - Add support for arrays for params and return types.
+- Add support for numpy arrays
 
 ## NOTES
 Don't forget that this the setup file should also include
