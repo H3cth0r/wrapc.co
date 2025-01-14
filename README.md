@@ -63,7 +63,94 @@ Generate walkers
 antlr4 -Dlanguage=Python3 *.g4 -visitor -o ../walkers/
 ```
 
-NEW Structure
+## Current Structure
+```
+tree -I 'venv|wrapcco\.egg-info|build|__pycache__|*.so'
+.
+├── docs
+│   ├── logo_wrapc_dark.svg
+│   ├── logo_wrapc_light.svg
+│   └── README.md
+├── LICENSE
+├── README.md
+├── setup.py
+├── shell.nix
+├── test
+│   ├── antlr_parser
+│   │   ├── my_cpp_pars
+│   │   │   ├── examples
+│   │   │   │   ├── test_1.h
+│   │   │   │   └── test_2.h
+│   │   │   ├── grammars
+│   │   │   │   ├── CPP14.g4
+│   │   │   │   ├── CPP14Lexer.g4
+│   │   │   │   └── CPP14Parser.g4
+│   │   │   ├── main.py
+│   │   │   ├── MyCppListener.py
+│   │   │   └── walkers
+│   │   │       ├── CPP14.interp
+│   │   │       ├── CPP14Lexer.interp
+│   │   │       ├── CPP14Lexer.py
+│   │   │       ├── CPP14Lexer.tokens
+│   │   │       ├── CPP14Listener.py
+│   │   │       ├── CPP14Parser.py
+│   │   │       ├── CPP14.tokens
+│   │   │       └── CPP14Visitor.py
+│   │   └── shell.nix
+│   ├── compile_cpp_class
+│   │   ├── example.cpp
+│   │   ├── example_header.h
+│   │   ├── secondExample.cpp
+│   │   ├── setup.py
+│   │   ├── ThirdDefs.h
+│   │   ├── thirdExample.cpp
+│   │   └── ThirdImpl.cpp
+│   ├── cpp_class
+│   │   ├── Human.cpp
+│   │   ├── human_extension.cpp
+│   │   ├── Human.h
+│   │   ├── setup.py
+│   │   ├── test_output.py
+│   │   └── wrap.py
+│   └── cpp_class_n_method
+│       ├── OpsLib.cpp
+│       ├── opslib_extension.cpp
+│       ├── OpsLibs.h
+│       └── setup.py
+├── test.py
+└── wrapcco
+    ├── core
+    │   ├── __init__.py
+    │   ├── tools.py
+    │   ├── utils.py
+    │   └── wrapper.py
+    ├── grammars
+    │   └── CPP.g4
+    ├── __init__.py
+    ├── listeners
+    │   ├── cpp_listener.py
+    │   └── __init__.py
+    ├── walkers
+    │   ├── CPP14Lexer.interp
+    │   ├── CPP14Lexer.py
+    │   ├── CPP14Lexer.tokens
+    │   ├── CPP.interp
+    │   ├── CPPLexer.interp
+    │   ├── CPPLexer.py
+    │   ├── CPPLexer.tokens
+    │   ├── CPPListener.py
+    │   ├── CPPParser.py
+    │   ├── CPP.tokens
+    │   ├── CPPVisitor.py
+    │   └── __init__.py
+    └── wrappers
+        ├── cpp_wrapper.py
+        └── __init__.py
+
+17 directories, 63 files
+```
+
+## NEW Structure
 ```
 wrapcco/
 ├── wrapcco/
