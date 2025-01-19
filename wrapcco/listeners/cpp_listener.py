@@ -48,7 +48,6 @@ class CppListener(CPPListener):
         self.constructor = None
         self.attribute = None
         self.function = None
-        print("\n"*2)
         self.program = Program()
 
     # Enter class defintion
@@ -76,10 +75,11 @@ class CppListener(CPPListener):
             self.method.returnType += txt if RT.getChildCount()-1 == i else txt + " "
     def enterParameter(self, ctx):
         param = Param()
+        id_indx = 2 if "array" in str(ctx.getChild(ctx.getChildCount()-1).__class__).lower() else 1
         for i in range(ctx.getChildCount()):
             txt = ctx.getChild(i).getText()
-            if i == ctx.getChildCount()-1: param.paramName += txt
-            elif i == 0 and ctx.getChildCount() > 2: param.paramConst = txt
+            if i == ctx.getChildCount()-id_indx: param.paramName += txt
+            elif i == 0 and txt == "const": param.paramConst = txt
             else: param.paramType += txt if ctx.getChildCount()-2 == i else txt + " "
         if self.method: self.method.params.append(param)
         elif self.constructor: self.constructor.params.append(param)

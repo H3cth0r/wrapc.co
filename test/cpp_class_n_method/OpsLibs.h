@@ -21,4 +21,6 @@ class Point {
 
 double calculateAverage(const int arr[], int size) ;
 
+double sum_cpp(int aa, int bb);
+
 #endif

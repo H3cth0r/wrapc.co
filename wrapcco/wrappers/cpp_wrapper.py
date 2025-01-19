@@ -196,6 +196,10 @@ static PyTypeObject {_class.className}Type = {{
                 self._generateConstructor(_class)
             self._generateMethods(_class)
             self._generateTypeObject(_class)
+        for _function in self.program.functions:
+            print(_function)
+            print("="*20)
+            if _function not in self.to_parse:continue
         self._generateModuleInit()
 
     def _generateModuleInit(self):

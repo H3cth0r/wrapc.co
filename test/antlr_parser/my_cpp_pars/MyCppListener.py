@@ -43,6 +43,7 @@ class Program:
 
 class MyCppListener(CPP14Listener):
     def __init__(self):
+        print("AAAAAAAOOOOOOO")
         self.inProgramContent = ""
         self.accessSpecifier = 'private'
         self.method = None
@@ -78,9 +79,11 @@ class MyCppListener(CPP14Listener):
     def enterParameter(self, ctx):
         # TODO check new logic given array intro
         param = Param()
+        id_indx = 2 if "array" in type(ctx.getChild(ctx.getChildCount()-1)).__name__ else 1
         for i in range(ctx.getChildCount()):
             txt = ctx.getChild(i).getText()
-            if i == ctx.getChildCount()-1: param.paramName += txt
+            # elif "array" in type(ctx.getChild(i)).__name__:
+            if i == ctx.getChildCount()-id_indx: param.paramName += txt
             else: param.paramType += txt if ctx.getChildCount()-2 == i else txt + " "
         if self.method: self.method.params.append(param)
         elif self.constructor: self.constructor.params.append(param)
@@ -113,6 +116,7 @@ class MyCppListener(CPP14Listener):
             txt = RT.getChild(i).getText()
             self.function.returnType += txt if RT.getChildCount()-1 == i else txt + " "
     def exitFunctionDefinition(self, ctx):
+        print(self.function)
         self.program.functions.append(self.function)
         self.function = None
 

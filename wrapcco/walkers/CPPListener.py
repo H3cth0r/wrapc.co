@@ -233,5 +233,14 @@ class CPPListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by CPPParser#array.
+    def enterArray(self, ctx:CPPParser.ArrayContext):
+        pass
+
+    # Exit a parse tree produced by CPPParser#array.
+    def exitArray(self, ctx:CPPParser.ArrayContext):
+        pass
+
+
 
 del CPPParser

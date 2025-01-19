@@ -98,9 +98,12 @@ parameter
     : Const? parameterType Identifier
     | Const? parameterType Ampersand Identifier
     | Const? parameterType Star Identifier
-    | Const? parameterType Identifier RightPar Digit LeftPar
+    | Const? parameterType Identifier array
     ;
 
+array
+    : LeftBracket Digit? RightBracket
+    ;
 
 // Lexer
 Class:          'class';
@@ -133,6 +136,8 @@ LeftBrace:      '{';
 RightBrace:     '}';
 LeftPar:        '(';
 RightPar:       ')';
+LeftBracket:    '[';
+RightBracket:   ']';
 LeftChevron:    '<';
 RightChevron:   '>';
 Semi:           ';';

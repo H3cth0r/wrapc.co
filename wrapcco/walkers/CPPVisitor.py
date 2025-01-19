@@ -134,5 +134,10 @@ class CPPVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by CPPParser#array.
+    def visitArray(self, ctx:CPPParser.ArrayContext):
+        return self.visitChildren(ctx)
+
+
 
 del CPPParser
