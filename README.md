@@ -9,6 +9,13 @@
 
 Python Library to Wrap C code to python extensions
 
+## WARNING: 23345... iteration. In current complete refactoring XD
+New iteration will be implemented with the following TODO list:
+- Parse functions in file, now only need to parse name of the functions.
+- Integrate Extension Setup tool to generate the extension.
+- Setup module `main` to be able to save 
+
+
 ### Install from source
 ```
 pip install -e .
