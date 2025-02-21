@@ -21,10 +21,20 @@ headers = lambda library: '''
 #include <memory>
 #include <numeric>
 #include <cstring>
+#include "FunctionWrapper.hpp"
 #include "<library-path>"
 '''.replace("<library-path>", library)
 
-function_wrapper = lambda file_path: open(file_path, 'r').read()
+register_handlers = '''
+// global registry to store functions
+static std::unordered_map<std::string, std::unique_ptr<FunctionWrapperBase>> function_registry;
+
+// function to register C++ functions
+template<typename Ret, typename... Args>
+void register_function(const std::string& name, Ret(*func)(Args...)) {
+    function_registry[name] = std::make_unique<FunctionWrapper<Ret, Args...>>(func);
+}
+'''
 
 execute_f = '''
 // python-callable function to execute registered functions
@@ -133,7 +143,7 @@ PyMODINIT_FUNC PyInit_<module-name>(void) {
 
 def generate_extension(module_name, library_file_name, method_names):
     output =    headers(library_file_name)
-    output +=   function_wrapper("./function-wrapper.txt")
+    output +=   register_handlers 
     output +=   execute_f
     output +=   template_methods(method_names)
     output +=   methods_def(method_names)

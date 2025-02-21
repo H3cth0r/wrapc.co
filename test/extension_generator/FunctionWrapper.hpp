@@ -1,3 +1,5 @@
+#include <stdexcept>
+
 // function wrapper base class
 class FunctionWrapperBase {
 public:
@@ -105,12 +107,3 @@ public:
         }
     }
 };
-
-// global registry to store functions
-static std::unordered_map<std::string, std::unique_ptr<FunctionWrapperBase>> function_registry;
-
-// function to register C++ functions
-template<typename Ret, typename... Args>
-void register_function(const std::string& name, Ret(*func)(Args...)) {
-    function_registry[name] = std::make_unique<FunctionWrapper<Ret, Args...>>(func);
-}
