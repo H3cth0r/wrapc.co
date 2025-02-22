@@ -7,4 +7,4 @@ if __name__ == "__main__":
     )
     print(type(wrapper))
 
-    wrapper.generate_files("./", True)
+    wrapper.generate("./", True)

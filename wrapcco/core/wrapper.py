@@ -40,7 +40,7 @@ class Wrapper:
         print(self.filepaths)
         print(self.filenames)
 
-    def generate_files(self, output_path: str, save: bool):
+    def generate(self, output_path: str, save: bool):
         extension_file = self._generate_extension_file(self.module_name, self.filenames, self.function_names)
         if save:
             output_path = output_path if output_path[-1] == '/' else output_path+'/'
@@ -53,11 +53,8 @@ class Wrapper:
                 raise
         return extension_file
 
-    def build(self): 
-        # during compilation pass the the file with the location
-        # g++ -I/path/to/headers main.cpp -o program
-        pass
-    def generate(self): pass
+    # TODO build is done in Extension
+    # def build(self): pass
 
     @classmethod
     def read_file(cls, module_name: str, filepaths: List[str])->Wrapper: 
