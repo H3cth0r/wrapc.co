@@ -18,9 +18,9 @@ setup(
         "Operating System :: OS Independent",
     ],
     python_requires=">=3.7",
-    install_requires=[
-        "antlr4-python3-runtime>=4.10", 
-    ],
+    # install_requires=[
+    #     "antlr4-python3-runtime>=4.10", 
+    # ],
     extras_require={
         "dev": [
             "pytest>=7.0",
@@ -33,8 +33,8 @@ setup(
     #     ]
     # },
     include_package_data=True,
-    package_data={
-        "wrapcco.grammars": ["*.g4"],  # Include grammar files
-    },
+    # package_data={
+    #     "wrapcco.grammars": ["*.g4"],  # Include grammar files
+    # },
     zip_safe=False,
 )

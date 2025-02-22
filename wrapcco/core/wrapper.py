@@ -1,7 +1,9 @@
+from __future__ import annotations
+
 from typing import List
 import logging
 import re
-import _template
+from wrapcco.core import _template
 
 """
 Wrapper will read either a file or string(code), parse available 
@@ -31,17 +33,39 @@ class Wrapper:
         """
         Get the code to wrap
         """
-        pass
+        self.module_name    = module_name
+        self.function_names = function_names 
+        self.filepaths      = filepaths 
+        self.filenames      = [ filename.split("/")[-1] for filename in filepaths]
+        print(self.filepaths)
+        print(self.filenames)
 
+    def generate_files(self, output_path: str, save: bool):
+        extension_file = self._generate_extension_file(self.module_name, self.filenames, self.function_names)
+        if save:
+            output_path = output_path if output_path[-1] == '/' else output_path+'/'
+            output_path += self.module_name+'.cpp'
+            print(output_path)
+            try:
+                with open(output_path,'w', encoding='utf-8') as file: file.write(extension_file)
+            except IOError as e:
+                logging.error(f"Failed to save wrapper: {str(e)}")
+                raise
+        return extension_file
+
+    def build(self): 
+        # during compilation pass the the file with the location
+        # g++ -I/path/to/headers main.cpp -o program
+        pass
     def generate(self): pass
-    def generate_files(self): pass
-    def build(self): pass
 
     @classmethod
-    def read_file(cls, name: str, filepaths: List[str])->Wrapper: 
-        loaded_functions = []
+    def read_file(cls, module_name: str, filepaths: List[str])->Wrapper: 
+        function_names = []
         if isinstance(filepaths, str): filepaths = [filepaths]
-        for filepath in filepaths: loaded_functions += cls._get_functions_from_file(filepath)
+        for filepath in filepaths: function_names += cls._get_functions_from_file(filepath)
+        print(function_names)
+        return cls(module_name=module_name, function_names=function_names, filepaths=filepaths)
 
     @classmethod
     def read(cls): pass
