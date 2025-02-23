@@ -1,1 +1,1 @@
-from extension import Extension
+from wrapcco.tools.extension import Extension
