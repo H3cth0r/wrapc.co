@@ -63,7 +63,7 @@ class Wrapper:
             tmp_dir = tempfile.mkdtemp(prefix=f"{self.module_name}_ext_")
             os.makedirs(tmp_dir, exist_ok=True)
             out_cpp = os.path.join(tmp_dir, f"{self.module_name}.cpp")
-            print(out_cpp)
+            print(f"out_cpp: {out_cpp}")
             try:
                 with open(out_cpp, 'w', encoding='utf-8') as f_out: f_out.write(extension_file)
                 # logging.info(f"Saved temporal CPP at {out_cpp}")

@@ -1,5 +1,6 @@
 headers = lambda library_files: '''
 #define PY_SSIZE_T_CLEAN
+#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
 #include <Python.h>
 #include <numpy/arrayobject.h>
 #include <unordered_map>
@@ -126,7 +127,7 @@ PyMODINIT_FUNC PyInit_<module-name>(void) {
 
     return module;
 }
-'''.replace("<register-functions>", register_functions_f(method_names)).replace("<module-name>", module_name)
+'''.replace("<register-functions>", register_functions_f(method_names)).replace("<module-name>", module_name.split('.')[-1])
 
 def generate_extension(module_name, library_file_name, method_names):
     output =    headers(library_file_name)
