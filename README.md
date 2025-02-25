@@ -15,14 +15,14 @@ Python Library to Wrap C code to python extensions
 - Add Piping, to streamline functions
 
 ## TOTEST
-- [-] Test Wrapper (`test/test_wrapper`)
+- [X] Test Wrapper (`test/test_wrapper`)
 - [ ] Test Wrapper save files (`test/test_wrapper_files`)
+- [ ] Test Wrapper generate library (`test/test_wrapper_str_code`)
+- [ ] Test Wrapper generate library with files (`test/test_wrapper_str_code_file`)
 - [-] Test Extension (`test/test_extension`)
 - [ ] Test Extension save files (`test/test_extension_files`)
 - [ ] Test Command Line
 - [ ] Test Command Line save files
-
-
 
 ### Install from source
 ```

@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include <numeric>
 #include <cmath>
+#include <omp.h>
 
 int addInts(int a, int b) {
     return a + b;
@@ -13,109 +14,35 @@ inline int addMoreInts(int a, int b, int c) {
     return a + b + c;
 }
 
-inline std::vector<double> addArrays(const std::vector<double>& a, const std::vector<double>& b) {
+inline NumpyArrayRef addArrays(const NumpyArrayRef& a, const NumpyArrayRef& b) {
+    // Check if arrays have the same size
     if (a.size() != b.size()) {
         throw std::runtime_error("Arrays must have the same size");
     }
     
-    std::vector<double> result(a.size());
-    std::transform(a.begin(), a.end(), b.begin(), result.begin(), std::plus<double>());
-    return result;
-}
-
-inline std::vector<double> multiplyArrays(const std::vector<double>& a, const std::vector<double>& b) {
-    if (a.size() != b.size()) {
-        throw std::runtime_error("Arrays must have the same size");
+    // Store common array size
+    const npy_intp size = a.size();
+    
+    // Get array data
+    double* a_data = a.data<double>();
+    double* b_data = b.data<double>();
+    
+    // Create output array with the same shape as input
+    npy_intp dims[] = {size};
+    PyObject* result_obj = PyArray_SimpleNew(1, dims, NPY_DOUBLE);
+    if (!result_obj) {
+        throw std::runtime_error("Failed to create output array");
     }
     
-    std::vector<double> result(a.size());
-    std::transform(a.begin(), a.end(), b.begin(), result.begin(), std::multiplies<double>());
-    return result;
-}
-
-inline std::vector<double> scaleArray(const std::vector<double>& arr, double scalar) {
-    std::vector<double> result(arr.size());
-    std::transform(arr.begin(), arr.end(), result.begin(),
-                  [scalar](double x) { return x * scalar; });
-    return result;
-}
-
-inline double dotProduct(const std::vector<double>& a, const std::vector<double>& b) {
-    if (a.size() != b.size()) {
-        throw std::runtime_error("Arrays must have the same size");
+    PyArrayObject* result_arr = reinterpret_cast<PyArrayObject*>(result_obj);
+    double* result_data = static_cast<double*>(PyArray_DATA(result_arr));
+    
+    // Perform addition directly on the array data using OpenMP
+    // #pragma omp parallel for
+    for (npy_intp i = 0; i < size; ++i) {
+        result_data[i] = a_data[i] + b_data[i];
     }
     
-    return std::inner_product(a.begin(), a.end(), b.begin(), 0.0);
-}
-
-inline std::vector<double> expArray(const std::vector<double>& arr) {
-    std::vector<double> result(arr.size());
-    std::transform(arr.begin(), arr.end(), result.begin(),
-                  [](double x) { return std::exp(x); });
-    return result;
-}
-
-inline std::vector<double> logArray(const std::vector<double>& arr) {
-    std::vector<double> result(arr.size());
-    std::transform(arr.begin(), arr.end(), result.begin(),
-                  [](double x) { 
-                      if (x <= 0) throw std::runtime_error("Log of non-positive number");
-                      return std::log(x); 
-                  });
-    return result;
-}
-
-inline double sumArray(const std::vector<double>& arr) {
-    return std::accumulate(arr.begin(), arr.end(), 0.0);
-}
-
-inline double meanArray(const std::vector<double>& arr) {
-    if (arr.empty()) {
-        throw std::runtime_error("Cannot compute mean of empty array");
-    }
-    return sumArray(arr) / arr.size();
-}
-
-inline double maxArray(const std::vector<double>& arr) {
-    if (arr.empty()) {
-        throw std::runtime_error("Cannot compute max of empty array");
-    }
-    return *std::max_element(arr.begin(), arr.end());
-}
-
-inline double minArray(const std::vector<double>& arr) {
-    if (arr.empty()) {
-        throw std::runtime_error("Cannot compute min of empty array");
-    }
-    return *std::min_element(arr.begin(), arr.end());
-}
-
-inline std::vector<double> linspace(double start, double end, size_t num) {
-    if (num < 2) {
-        throw std::runtime_error("Number of points must be at least 2");
-    }
-    
-    std::vector<double> result(num);
-    double step = (end - start) / (num - 1);
-    
-    for (size_t i = 0; i < num; ++i) {
-        result[i] = start + step * i;
-    }
-    
-    return result;
-}
-
-inline std::vector<double> arange(double start, double end, double step = 1.0) {
-    if (step == 0.0) {
-        throw std::runtime_error("Step size cannot be zero");
-    }
-    
-    size_t num = static_cast<size_t>((end - start) / step);
-    std::vector<double> result(num);
-    
-    for (size_t i = 0; i < num; ++i) {
-        result[i] = start + step * i;
-    }
-    
-    return result;
+    // Return the new array (NumpyArrayRef will manage the reference)
+    return NumpyArrayRef(result_arr);
 }
