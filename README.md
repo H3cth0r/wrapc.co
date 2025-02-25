@@ -9,6 +9,9 @@
 
 Python Library to Wrap C code to python extensions
 
+## NOTE
+- currently compyling in `c++17`.
+
 ## TODO
 - Create `Extension` method (as setuptools).
 - Enable generate extension as command line command.
@@ -16,11 +19,10 @@ Python Library to Wrap C code to python extensions
 
 ## TOTEST
 - [x] Test Wrapper (`test/test_wrapper`)
-- [ ] Test Wrapper save files (`test/test_wrapper_files`)
-- [ ] Test Wrapper generate library (`test/test_wrapper_str_code`)
-- [ ] Test Wrapper generate library with files (`test/test_wrapper_str_code_file`)
-- [-] Test Extension (`test/test_extension`)
-- [ ] Test Extension save files (`test/test_extension_files`)
+- [x] Test Wrapper save files (`test/test_wrapper_files`)
+- [x] Test Wrapper generate library (`test/test_wrapper_str_code`)
+- [x] Test Wrapper generate library with files (`test/test_wrapper_str_code_file`)
+- [x] Test Extension and Test Extension save files(`test/test_extension`)
 - [ ] Test Command Line
 - [ ] Test Command Line save files
 

@@ -14,7 +14,4 @@ print(type(wrapper))
 output = wrapper.generate("./", False)
 print(output)
 ```
-2. Execute main script:
-```
-python main.py
-```
+2. Execute main script: `python main.py`

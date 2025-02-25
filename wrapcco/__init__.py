@@ -1,4 +1,5 @@
 from wrapcco.core.wrapper import Wrapper
+from wrapcco.resources.FunctionWrapper import get_fw_include
 import argparse
 
 __version__ = "0.1.0"

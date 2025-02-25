@@ -78,6 +78,7 @@ class Wrapper:
             os.makedirs(os.path.dirname(output_path), exist_ok=True)
             try:
                 with open(out_fp, 'w', encoding='utf-8') as f_out: f_out.write(extension_file)
+                self.generated_cpps.append(out_fp)
             except IOError as e:
                 logging.error(f"Failed saving temporal CPP:{e}")
                 raise

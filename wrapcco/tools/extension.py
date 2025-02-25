@@ -20,7 +20,7 @@ Where:
 """
 
 class Extension(Wrapper):
-    def __init__(self, module_name: str, filepaths: List[str], output_path: str, *args, **kwargs):
+    def __init__(self, module_name: str, filepaths: List[str], save: bool=False, output_path: str="", *args, **kwargs):
         wrapper = Wrapper.read_file(module_name, filepaths)
         super().__init__(
                 module_name=wrapper.module_name,
@@ -32,9 +32,11 @@ class Extension(Wrapper):
         self.extra_args = args
         self.extra_kwargs = kwargs
         self.extension = None
+        self.save = save
+
     def build(self): 
         print("Building")
-        self.generate(self.output_path)
+        self.generate(self.output_path, self.save)
         print(self.generated_cpps[0])
 
         import wrapcco

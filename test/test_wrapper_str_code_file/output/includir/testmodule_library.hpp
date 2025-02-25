@@ -1,10 +1,5 @@
-#pragma once
-#include <vector>
-#include <algorithm>
-#include <stdexcept>
-#include <numeric>
-#include <cmath>
 
+#pragma once
 int addInts(int a, int b) {
     return a + b;
 }
@@ -12,3 +7,4 @@ int addInts(int a, int b) {
 inline int addMoreInts(int a, int b, int c) {
     return a + b + c;
 }
+    
