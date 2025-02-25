@@ -14,6 +14,16 @@ Python Library to Wrap C code to python extensions
 - Enable generate extension as command line command.
 - Add Piping, to streamline functions
 
+## TOTEST
+- [-] Test Wrapper (`test/test_wrapper`)
+- [ ] Test Wrapper save files (`test/test_wrapper_files`)
+- [-] Test Extension (`test/test_extension`)
+- [ ] Test Extension save files (`test/test_extension_files`)
+- [ ] Test Command Line
+- [ ] Test Command Line save files
+
+
+
 ### Install from source
 ```
 pip install -e .

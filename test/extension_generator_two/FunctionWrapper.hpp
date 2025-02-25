@@ -1,11 +1,75 @@
 #include <stdexcept>
 #include <numpy/arrayobject.h>
 
-template <typename T>
-struct ndarray_view {
-    T* data;
-    int ndim;
-    std::vector<npy_intp> shape;
+// Add a new type to handle numpy arrays directly
+struct NumpyArrayRef {
+    PyArrayObject* array;
+    bool owns_data;  // Whether this object should decrement the reference on destruction
+    
+    // Constructor that takes ownership
+    explicit NumpyArrayRef(PyArrayObject* arr, bool take_ownership = true) 
+        : array(arr), owns_data(take_ownership) {
+        if (take_ownership) {
+            Py_INCREF(arr);
+        }
+    }
+    
+    // Destructor to handle reference counting
+    ~NumpyArrayRef() {
+        if (owns_data && array) {
+            Py_DECREF(array);
+        }
+    }
+    
+    // No copy constructor - prevent accidental copying
+    NumpyArrayRef(const NumpyArrayRef&) = delete;
+    NumpyArrayRef& operator=(const NumpyArrayRef&) = delete;
+    
+    // Move constructor and assignment
+    NumpyArrayRef(NumpyArrayRef&& other) noexcept
+        : array(other.array), owns_data(other.owns_data) {
+        other.array = nullptr;
+        other.owns_data = false;
+    }
+    
+    NumpyArrayRef& operator=(NumpyArrayRef&& other) noexcept {
+        if (this != &other) {
+            if (owns_data && array) {
+                Py_DECREF(array);
+            }
+            array = other.array;
+            owns_data = other.owns_data;
+            other.array = nullptr;
+            other.owns_data = false;
+        }
+        return *this;
+    }
+    
+    // Helper methods to access data
+    template<typename T>
+    T* data() const {
+        return static_cast<T*>(PyArray_DATA(array));
+    }
+    
+    int ndim() const {
+        return PyArray_NDIM(array);
+    }
+    
+    npy_intp size() const {
+        return PyArray_SIZE(array);
+    }
+    
+    npy_intp* shape() const {
+        return PyArray_DIMS(array);
+    }
+    
+    npy_intp* strides() const {
+        return PyArray_STRIDES(array);
+    }
+    
+    int dtype() const {
+        return PyArray_TYPE(array);
+    }
 };
 
 // function wrapper base class
@@ -30,7 +94,7 @@ private:
         } else if constexpr (std::is_same_v<U, double>) {
             return PyFloat_AsDouble(obj);
         } else if constexpr (std::is_same_v<U, std::vector<double>>) {
-            // (conversion for numpy array to std::vector<double> remains the same)
+            // Keep this for backward compatibility
             if (!PyArray_Check(obj)) {
                 throw std::runtime_error("Expected numpy array");
             }
@@ -48,6 +112,24 @@ private:
             
             Py_DECREF(arr_cont);
             return result;
+        } else if constexpr (std::is_same_v<U, NumpyArrayRef>) {
+            // For direct NumPy array handling
+            if (!PyArray_Check(obj)) {
+                throw std::runtime_error("Expected numpy array");
+            }
+            
+            // Ensure the array is contiguous and has the right type
+            // Note: This doesn't copy data if the array is already contiguous and of the right type
+            PyArrayObject* arr_cont = reinterpret_cast<PyArrayObject*>(
+                PyArray_FromAny(obj, nullptr, 0, 0, 
+                                NPY_ARRAY_C_CONTIGUOUS | NPY_ARRAY_ENSUREARRAY, 
+                                nullptr));
+            
+            if (!arr_cont) {
+                throw std::runtime_error("Could not ensure array is contiguous");
+            }
+            
+            return NumpyArrayRef(arr_cont, true);  // true means take ownership
         }
         throw std::runtime_error("Unsupported type conversion");
     }
@@ -68,6 +150,10 @@ private:
             memcpy(PyArray_DATA(reinterpret_cast<PyArrayObject*>(arr)), 
                    value.data(), value.size() * sizeof(double));
             return arr;
+        } else if constexpr (std::is_same_v<T, NumpyArrayRef>) {
+            // For returning NumPy arrays directly
+            Py_INCREF(value.array);  // Increase reference count for the returned value
+            return reinterpret_cast<PyObject*>(value.array);
         }
         throw std::runtime_error("Unsupported return type conversion");
     }
