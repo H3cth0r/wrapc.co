@@ -48,9 +48,6 @@ class Wrapper:
         # paths for generated cpp files
         self.generated_cpps: List[str] = []
 
-        print(self.filepaths)
-        print(self.filenames)
-
     def __del__(self):
         for d in list(set(self.tmp_dirs)):
             try: shutil.rmtree(d)
@@ -63,7 +60,6 @@ class Wrapper:
             tmp_dir = tempfile.mkdtemp(prefix=f"{self.module_name}_ext_")
             os.makedirs(tmp_dir, exist_ok=True)
             out_cpp = os.path.join(tmp_dir, f"{self.module_name}.cpp")
-            print(f"out_cpp: {out_cpp}")
             try:
                 with open(out_cpp, 'w', encoding='utf-8') as f_out: f_out.write(extension_file)
                 # logging.info(f"Saved temporal CPP at {out_cpp}")
@@ -92,7 +88,6 @@ class Wrapper:
         function_names = []
         if isinstance(filepaths, str): filepaths = [filepaths]
         for filepath in filepaths: function_names += cls._get_functions_from_file(filepath)
-        print(function_names)
         return cls(module_name=module_name, function_names=function_names, filepaths=filepaths)
 
     @classmethod
