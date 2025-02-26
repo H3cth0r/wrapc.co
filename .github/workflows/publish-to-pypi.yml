@@ -76,10 +76,10 @@ jobs:
         with:
           inputs: ./dist/*
 
-      - name Create Release 
+      - name: Create Release 
         env:
-          GITHUB_TOKEN ${{ secrets.GITHUB_TOKEN }} 
-        run |
+          GITHUB_TOKEN: ${{ secrets.token }} 
+        run: >-
           gh release create "${GITHUB_REF_NAME}" \
             --repo "$GITHUB_REPOSITORY" \
             --title "Release ${GITHUB_REF_NAME}" \

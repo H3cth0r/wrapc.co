@@ -7,14 +7,19 @@
 
 ---
 
-# WrapC.co ⚡
-Hey there! Welcome to **WrapC.co** – your new shortcut to turbocharged Python extensions! 🚀 Born from the fiery forge of developing [Statis.co](https://github.com/H3cth0r/statis.co), our bleeding-edge quantitative finance toolkit, WrapC.co is here to revolutionize how you build Python-C/C++ integrations.
+Hey there! Welcome to **WrapC.co** ⚡ – your new shortcut to turbocharged Python extensions! 🚀 Born from the fiery forge of developing [Statis.co](https://github.com/H3cth0r/statis.co), our bleeding-edge quantitative finance toolkit, WrapC.co is here to revolutionize how you build Python-C/C++ integrations.
 
 When we first built Statis.co, we brute-forced our way through manual Python-C extensions and Numpy C API integrations. While it worked (and honestly, *crushed* Numpy-python in speed tests 💨), we quickly hit a wall. Endless boilerplate code, argument parsing gymnastics, and setup file headaches sucked the joy out of development. That's when we thought: *"There's gotta be a better way..."* ❄️
 
 Enter **WrapC.co** – the developer experience upgrade you didn't know you needed. We automated the boring bits so you can focus on **writing killer C/C++ code** instead of wrestling with wrapper setup. Now you can seamlessly expose optimized numerical functions, process Numpy arrays at warp speed, and kiss 80% of that boilerplate junk goodbye 🗑️. Same native performance, 10x the developer zen. 🔮
 
 ## Installation
+
+### Install from PyPi
+```
+pip install wrapcco
+```
+
 ### Install from Source
 ```
 git clone https://github.com/H3cth0r/wrapc.co
