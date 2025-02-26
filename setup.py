@@ -1,3 +1,4 @@
+# setup.py
 from setuptools import setup, find_packages
 
 setup(
@@ -27,11 +28,11 @@ setup(
             "flake8>=6.0", 
         ]
     },
-    # entry_points={
-    #     "console_scripts": [
-    #         "wrapcco=wrapcco.__main__:main",  # CLI entry point, if applicable
-    #     ]
-    # },
+    entry_points={
+        "console_scripts": [
+            "wrapcco=wrapcco:_main",  # CLI entry point, if applicable
+        ]
+    },
     include_package_data=True,
     # package_data={
     #     "wrapcco.grammars": ["*.g4"],  # Include grammar files

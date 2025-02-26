@@ -23,8 +23,8 @@ Python Library to Wrap C code to python extensions
 - [x] Test Wrapper generate library (`test/test_wrapper_str_code`)
 - [x] Test Wrapper generate library with files (`test/test_wrapper_str_code_file`)
 - [x] Test Extension and Test Extension save files(`test/test_extension`)
-- [ ] Test Command Line
-- [ ] Test Command Line save files
+- [x] Test Command Line (`test/test_command_line`)
+- [x] Test Command Line save files (`test/test_command_line`)
 
 ### Install from source
 ```
@@ -32,6 +32,12 @@ pip install -e .
 ```
 
 ### Basic usage
+```py
+python -m wrapcco <library>.hpp --module-name <modulename> --save-script <true/false> --output-path "./"
+```
+- `<library>`: hpp file containing the library functions.
+- `--module-name`: name or your output module executable.
+- `--save-script`: choose if you want to generate the `cpp` extension file.
 
 
 ```
