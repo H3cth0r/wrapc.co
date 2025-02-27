@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="wrapcco",
-    version="0.1.0",
+    version="0.1.3",
     author="Hector Miranda",
     author_email="hector.miranda@zentinel.mx",
     description="A Python module to wrap C/C++ code and generate Python extensions.",
