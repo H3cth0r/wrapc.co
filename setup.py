@@ -19,9 +19,10 @@ setup(
         "Operating System :: OS Independent",
     ],
     python_requires=">=3.7",
-    # install_requires=[
-    #     "antlr4-python3-runtime>=4.10", 
-    # ],
+    install_requires=[
+        "numpy",
+        "setuptools"
+    ],
     extras_require={
         "dev": [
             "pytest>=7.0",
@@ -30,12 +31,12 @@ setup(
     },
     entry_points={
         "console_scripts": [
-            "wrapcco=wrapcco:_main",  # CLI entry point, if applicable
+            "wrapcco=wrapcco:_main",
         ]
     },
     include_package_data=True,
-    # package_data={
-    #     "wrapcco.grammars": ["*.g4"],  # Include grammar files
-    # },
+    package_data={
+        "wrapcco.resources": ["*.hpp"],
+    },
     zip_safe=False,
 )
