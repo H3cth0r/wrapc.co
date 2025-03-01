@@ -1,23 +1,7 @@
-{ pkgs ? import <nixpkgs> {} }:
-
+with import <nixpkgs> {};
 let
-  python = pkgs.python310;
-  pythonPackages = python.pkgs;
-
-in pkgs.mkShell {
-  buildInputs = [
-    python
-    pythonPackages.pip
-    pythonPackages.virtualenv
-    pythonPackages.numpy
-    pkgs.tree
-  ];
-
-  shellHook = ''
-    # Create and activate a virtual environment if it doesn't exist
-    if [ ! -d "venv" ]; then
-      virtualenv venv
-    fi
-    source venv/bin/activate
-  '';
+  mywrapcco = python3.pkgs.callPackage ./wrapcco/default.nix {};
+in
+mkShell {
+  packages = [ mywrapcco ];
 }
