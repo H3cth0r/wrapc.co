@@ -22,6 +22,11 @@ buildPythonPackage rec {
     setuptools
   ];
 
+  # require non trivial test setup
+  doCheck = false;
+
+  pythonImportsCheck = [ "wrapcco" ];
+
   meta = {
     description = "Supercharge Python with C++ extensions!";
     homepage = "https://github.com/H3cth0r/wrapc.co";
