@@ -61,3 +61,33 @@ Run this command:
 ```
 nixfmt 'pkgs/development/python-modules/wrapcco/default.nix'
 ```
+
+
+
+## When Fixing PR
+
+```
+git stash push -m "temp stash"
+```
+
+```
+git reset --soft origin/master
+```
+
+```
+git reset HEAD .
+```
+
+```
+git add default.nix
+git commit -m "Update default.nix"
+```
+
+```
+git add .
+git commit -m "Update other files"
+```
+
+```
+git push origin add-wrapcko --force
+```
