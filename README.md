@@ -117,3 +117,4 @@ wrapcco --help-examples
 
 ## TODO
 - Add Piping, to streamline functions
+- Implement functions to create easy arrays.
